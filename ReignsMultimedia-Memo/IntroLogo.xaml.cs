@@ -18,8 +18,7 @@ namespace ReignsMultimedia_Memo {
     /// Interaction logic for IntroLogo.xaml
     /// </summary>
     public partial class IntroLogo : UserControl {
-        public IntroLogo()
-        {
+        public IntroLogo() {
             InitializeComponent();
         }
     }
