@@ -12,24 +12,15 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.Threading;
-using System.Diagnostics;
 
 namespace ReignsMultimedia_Memo {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for IntroLogo.xaml
     /// </summary>
-    public partial class MainWindow : Window {
-        Stopwatch stopwatch;
-
-
-        public MainWindow() {
+    public partial class IntroLogo : UserControl {
+        public IntroLogo()
+        {
             InitializeComponent();
-            stopwatch = new Stopwatch();
-            panelBase.Children.Add(new IntroLogo());
-
-
-            
         }
     }
 }
