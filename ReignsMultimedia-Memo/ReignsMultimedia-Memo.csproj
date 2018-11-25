@@ -56,11 +56,24 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Event.cs" />
+    <Compile Include="GameplayWindow.xaml.cs">
+      <DependentUpon>GameplayWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="SeleccionPanel.xaml.cs">
+      <DependentUpon>SeleccionPanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SequenceEvent.cs" />
     <Compile Include="Stats.cs" />
+    <Compile Include="StatsPanel.xaml.cs">
+      <DependentUpon>StatsPanel.xaml</DependentUpon>
+    </Compile>
+    <Page Include="GameplayWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IntroLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -84,6 +97,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="SeleccionPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="StatsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -122,6 +143,26 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Splashes\menuSplash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\alumnosIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\estresIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Icons\maestrosIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\administracionIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Icons\administracionIconFULL.png" />
+    <Resource Include="Assets\Icons\alumnosIconFULL.png" />
+    <Resource Include="Assets\Icons\estresIconFULL.png" />
+    <Resource Include="Assets\Icons\maestrosIconFULL.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
