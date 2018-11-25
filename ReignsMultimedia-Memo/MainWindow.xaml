@@ -8,6 +8,6 @@
         ResizeMode="NoResize"
         Title="MainWindow" Height="750" Width="400">
     <Grid Background="#060417">
-        <StackPanel Name="panelBase" Opacity="0" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <StackPanel Name="panelBase" Opacity="0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
