@@ -65,6 +65,10 @@ namespace ReignsMultimedia_Memo {
                     Dispatcher.Invoke(AnimateIntro);
                     //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
+
+                if (gameState == GameState.Menu) {
+                    
+                }
                 
                 Dispatcher.Invoke(
                 () => {
@@ -91,6 +95,8 @@ namespace ReignsMultimedia_Memo {
                     } else {
                         panelBase.Children.Clear();
                         gameState = GameState.Menu;
+                        panelBase.Children.Add(new MainMenu());
+                        panelBase.Opacity = 1;
                     }
                 }
                 else {
