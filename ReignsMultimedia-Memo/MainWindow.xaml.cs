@@ -89,6 +89,7 @@ namespace ReignsMultimedia_Memo {
                         fadeOut -= deltaTime.TotalSeconds / introFadeOutAnimationDuration;
                         panelBase.Opacity = fadeOut;
                     } else {
+                        panelBase.Children.Clear();
                         gameState = GameState.Menu;
                     }
                 }
