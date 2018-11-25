@@ -26,8 +26,15 @@ namespace ReignsMultimedia_Memo {
         enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
         GameState gameState = GameState.Intro;
 
+        List<Event> events = new List<Event>();
+
         public MainWindow() {
             InitializeComponent();
+
+            Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
+                    null, "left", new List<int> { 0, 0, 0, 0 }, null);
+            events.Add(event1);
+
             stopwatch = new Stopwatch();
             stopwatch.Start();
             previousTime = stopwatch.Elapsed;

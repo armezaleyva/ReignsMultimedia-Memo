@@ -5,6 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace ReignsMultimedia_Memo {
-    class SequenceEvent: Event {
+    class SequenceEvent {
     }
 }
