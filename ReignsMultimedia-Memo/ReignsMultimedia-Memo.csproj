@@ -56,8 +56,15 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Event.cs" />
+    <Compile Include="Gameplay.xaml.cs">
+      <DependentUpon>Gameplay.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SequenceEvent.cs" />
     <Compile Include="Stats.cs" />
+    <Page Include="Gameplay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="IntroLogo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

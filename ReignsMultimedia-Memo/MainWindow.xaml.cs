@@ -33,7 +33,16 @@ namespace ReignsMultimedia_Memo {
 
             Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
                     null, "left", new List<int> { 0, 0, 0, 0 }, null);
+            Event event2 = new Event("test 2", "right 2", new List<int> { 0, 0, 0, 0 },
+                    null, "left 2", new List<int> { 0, 0, 0, 0 }, null);
+            Event event3 = new Event("test 3", "right 3", new List<int> { 0, 0, 0, 0 },
+                    null, "left 3", new List<int> { 0, 0, 0, 0 }, null);
+
+            
+
             events.Add(event1);
+            events.Add(event2);
+            events.Add(event3);
 
             stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -65,11 +74,21 @@ namespace ReignsMultimedia_Memo {
                     Dispatcher.Invoke(AnimateIntro);
                     //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
+
                 
-                Dispatcher.Invoke(
-                () => {
-                    
-                });
+                if (gameState == GameState.Gameplay) {
+                    Dispatcher.Invoke(
+                    () => {
+                        var panelGameplay = (Gameplay)panelBase.Children[0];
+                        panelGameplay.lblEvent.Text = events[0].Text;
+
+                        var random = new Random();
+                        var randomIndex = random.Next(events.Count());
+                        var selectedEvent = events[randomIndex];
+                        events.RemoveAt(randomIndex);
+                    });
+                }
+
             }
         }
 
@@ -91,6 +110,9 @@ namespace ReignsMultimedia_Memo {
                     } else {
                         panelBase.Children.Clear();
                         gameState = GameState.Menu;
+                        panelBase.Children.Add(new Gameplay());
+                        panelBase.Opacity = 1;
+                        gameState = GameState.Gameplay;
                     }
                 }
                 else {
