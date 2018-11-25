@@ -10,5 +10,6 @@ namespace ReignsMultimedia_Memo {
         public static int teachers = 50;
         public static int management = 50;
         public static int stress = 50;
+        public static int currentWeek = 1;
     }
 }
