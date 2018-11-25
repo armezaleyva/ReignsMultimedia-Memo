@@ -37,34 +37,58 @@ namespace ReignsMultimedia_Memo {
             thread.Start();
         }
 
+        
+        double fadeInAnimationDuration = 3.00;
+        double waitDuration = 2.00;
+        double fadeOutAnimationDuration = 3.00;
+
         double fadeIn = 0.0000;
         double fadeOut = 1.000;
-        double timer = 0.0000;
+
+        double fadeInTimer = 0.0000;
+        double waitTimer = 0.0000;
+        double fadeOutTimer = 0.0000;
+
+        bool executingIntro = true;
+
         void update() {
             while (true) {
+                if (executingIntro) {
+                    Dispatcher.Invoke(animateIntro);
+                }
+                
                 Dispatcher.Invoke(
                 () => {
-                    var currentTime = stopwatch.Elapsed;
-                    var deltaTime = currentTime - previousTime;
                     
-                    
-                    if (fadeIn < 1) {
-                        fadeIn += 0.00001;
-                        panelBase.Opacity = fadeIn;
-                    } else {
-                        timer += 0.0001;
-                        if (timer >= 1) {
-                            if (fadeOut > 0) {
-                                fadeOut -= 0.00001;
-                                panelBase.Opacity = fadeOut;
-                            }
-                        }
-                    }
-                    
-                    
-                    previousTime = currentTime;
                 });
             }
+        }
+
+        void animateIntro() {
+            var currentTime = stopwatch.Elapsed;
+            var deltaTime = currentTime - previousTime;
+
+            if (fadeInTimer < fadeInAnimationDuration) {
+                fadeInTimer += deltaTime.TotalSeconds;
+                fadeIn += deltaTime.TotalSeconds / fadeInAnimationDuration;
+                panelBase.Opacity = fadeIn;
+            }
+            else {
+                if (waitTimer >= waitDuration) {
+                    if (fadeOutTimer <= fadeOutAnimationDuration) {
+                        fadeOutTimer += deltaTime.TotalSeconds;
+                        fadeOut -= deltaTime.TotalSeconds / fadeOutAnimationDuration;
+                        panelBase.Opacity = fadeOut;
+                    } else {
+                        executingIntro = false;
+                    }
+                }
+                else {
+                    waitTimer += deltaTime.TotalSeconds;
+                }
+            }
+
+            previousTime = currentTime;
         }
     }
 }
