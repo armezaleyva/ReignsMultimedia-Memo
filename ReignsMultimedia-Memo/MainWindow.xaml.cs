@@ -35,7 +35,7 @@ namespace ReignsMultimedia_Memo {
             panelBase.Children.Add(new IntroLogo());
                 
 
-            ThreadStart threadStart = new ThreadStart(update);
+            ThreadStart threadStart = new ThreadStart(Update);
             Thread thread = new Thread(threadStart);
             thread.Start();
         }
@@ -52,10 +52,10 @@ namespace ReignsMultimedia_Memo {
         double waitTimer = 0.0000;
         double fadeOutTimer = 0.0000;
 
-        void update() {
+        void Update() {
             while (true) {
                 if (gameState == GameState.Intro) {
-                    Dispatcher.Invoke(animateIntro);
+                    Dispatcher.Invoke(AnimateIntro);
                 }
                 
                 Dispatcher.Invoke(
@@ -65,7 +65,7 @@ namespace ReignsMultimedia_Memo {
             }
         }
 
-        void animateIntro() {
+        void AnimateIntro() {
             var currentTime = stopwatch.Elapsed;
             var deltaTime = currentTime - previousTime;
 
