@@ -56,6 +56,7 @@ namespace ReignsMultimedia_Memo {
             while (true) {
                 if (gameState == GameState.Intro) {
                     Dispatcher.Invoke(AnimateIntro);
+                    //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
                 
                 Dispatcher.Invoke(
