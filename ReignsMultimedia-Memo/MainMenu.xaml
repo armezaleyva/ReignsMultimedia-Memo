@@ -7,6 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="400">
     <Grid>
-        <Image Source="Assets/Splashes/menuSplash.png"></Image>  
+        <Image Source="Assets/Splashes/menuSplash.png"></Image>
+        <Button FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="39,468,40,218" FontSize="24" IsDefault="True">INICIAR</Button>
+        <Button FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="39,556,40,130" FontSize="24" IsDefault="True">SALIR</Button>
     </Grid>
 </UserControl>
