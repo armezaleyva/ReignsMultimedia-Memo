@@ -41,9 +41,9 @@ namespace ReignsMultimedia_Memo {
         }
 
         
-        double fadeInAnimationDuration = 3.00;
-        double waitDuration = 2.00;
-        double fadeOutAnimationDuration = 3.00;
+        double introFadeInAnimationDuration = 3.00;
+        double introWaitDuration = 2.00;
+        double introFadeOutAnimationDuration = 3.00;
 
         double fadeIn = 0.0000;
         double fadeOut = 1.000;
@@ -69,16 +69,16 @@ namespace ReignsMultimedia_Memo {
             var currentTime = stopwatch.Elapsed;
             var deltaTime = currentTime - previousTime;
 
-            if (fadeInTimer < fadeInAnimationDuration) {
+            if (fadeInTimer < introFadeInAnimationDuration) {
                 fadeInTimer += deltaTime.TotalSeconds;
-                fadeIn += deltaTime.TotalSeconds / fadeInAnimationDuration;
+                fadeIn += deltaTime.TotalSeconds / introFadeInAnimationDuration;
                 panelBase.Opacity = fadeIn;
             }
             else {
-                if (waitTimer >= waitDuration) {
-                    if (fadeOutTimer <= fadeOutAnimationDuration) {
+                if (waitTimer >= introWaitDuration) {
+                    if (fadeOutTimer <= introFadeOutAnimationDuration) {
                         fadeOutTimer += deltaTime.TotalSeconds;
-                        fadeOut -= deltaTime.TotalSeconds / fadeOutAnimationDuration;
+                        fadeOut -= deltaTime.TotalSeconds / introFadeOutAnimationDuration;
                         panelBase.Opacity = fadeOut;
                     } else {
                         gameState = GameState.Menu;
@@ -90,6 +90,14 @@ namespace ReignsMultimedia_Memo {
             }
 
             previousTime = currentTime;
+        }
+
+        void AnimateEventIn() {
+
+        }
+
+        void AnimateEventOut() {
+
         }
     }
 }
