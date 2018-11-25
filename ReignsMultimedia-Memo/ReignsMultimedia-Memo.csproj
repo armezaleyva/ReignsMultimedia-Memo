@@ -62,8 +62,8 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SeleccionPanel.xaml.cs">
-      <DependentUpon>SeleccionPanel.xaml</DependentUpon>
+    <Compile Include="EventPanel.xaml.cs">
+      <DependentUpon>EventPanel.xaml</DependentUpon>
     </Compile>
     <Compile Include="SequenceEvent.cs" />
     <Compile Include="Stats.cs" />
@@ -97,7 +97,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="SeleccionPanel.xaml">
+    <Page Include="EventPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -133,9 +133,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Assets\Characters\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Assets\logoMemo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -163,6 +161,41 @@
     <Resource Include="Assets\Icons\alumnosIconFULL.png" />
     <Resource Include="Assets\Icons\estresIconFULL.png" />
     <Resource Include="Assets\Icons\maestrosIconFULL.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Splashes\titleBackground.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Characters\Andrea.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Betin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Betito.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Celina.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Cluadia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Erika.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Ivan.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Luis.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Sebas.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\Characters\Sofia.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

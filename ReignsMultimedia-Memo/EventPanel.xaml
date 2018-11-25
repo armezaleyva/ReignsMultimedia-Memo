@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="ReignsMultimedia_Memo.EventPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ReignsMultimedia_Memo"
+             mc:Ignorable="d" 
+             d:DesignHeight="627" d:DesignWidth="400" Width="400" Height="627">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Top">
+
+        <TextBlock Name="lblPersonaje"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" Height="55" FontSize="24" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="#FFFDFDFD" Margin="0,30,0,0" TextAlignment="Center" Padding="13">
+            <TextBlock.Background>
+                <ImageBrush ImageSource="Assets/Splashes/titleBackground.png"/>
+            </TextBlock.Background> Lalo
+        </TextBlock>
+
+        <TextBlock Name="lblEventoDescripcion" Background="#FF666666" TextWrapping="WrapWithOverflow" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" FontSize="16" Margin="1,120,-1,-99" Width="400" Height="125" VerticalAlignment="Top" Padding="30,25,30,27" >Los alumnos se quejaron mucho de Patiño en la evaluación pasada y administración quiere que hables con él</TextBlock>
+
+
+        <Rectangle Fill="Black" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,-404"/>
+        <Image Name="imgEvent" Source="Assets/Characters/Cluadia.png" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,-404"></Image>
+
+        <TextBlock Name="lblRespuesta" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" TextWrapping="Wrap" Margin="30,0,32,-454" FontStyle="Italic">“Diles que tienen que tomar fotos en la Miravalle de noche...solos...”</TextBlock>
+
+
+    </Grid>
+</UserControl>
