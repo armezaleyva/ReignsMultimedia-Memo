@@ -23,6 +23,9 @@ namespace ReignsMultimedia_Memo {
         Stopwatch stopwatch;
         TimeSpan previousTime;
 
+        enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
+        GameState gameState = GameState.Intro;
+
         public MainWindow() {
             InitializeComponent();
             stopwatch = new Stopwatch();
@@ -49,11 +52,9 @@ namespace ReignsMultimedia_Memo {
         double waitTimer = 0.0000;
         double fadeOutTimer = 0.0000;
 
-        bool executingIntro = true;
-
         void update() {
             while (true) {
-                if (executingIntro) {
+                if (gameState == GameState.Intro) {
                     Dispatcher.Invoke(animateIntro);
                 }
                 
@@ -80,7 +81,7 @@ namespace ReignsMultimedia_Memo {
                         fadeOut -= deltaTime.TotalSeconds / fadeOutAnimationDuration;
                         panelBase.Opacity = fadeOut;
                     } else {
-                        executingIntro = false;
+                        gameState = GameState.Menu;
                     }
                 }
                 else {
