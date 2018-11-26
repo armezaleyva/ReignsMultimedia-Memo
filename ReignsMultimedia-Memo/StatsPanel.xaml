@@ -4,9 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ReignsMultimedia_Memo"
-             mc:Ignorable="d" 
-             d:DesignHeight="123" d:DesignWidth="400">
-    <Grid Background="#C2A962">
+             mc:Ignorable="d" d:DesignWidth="400" Height="82">
+    <Grid Background="#C2A962" VerticalAlignment="Top" Height="82">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
@@ -22,10 +21,10 @@
         <Image Grid.Column="2" Source="Assets/Icons/administracionIconFULL.png" Height="29" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Image Grid.Column="3" Source="Assets/Icons/estresIconFULL.png" Height="42" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <Image Grid.Column="0" Name="alumnosIcon" Source="Assets/Icons/alumnosIcon.png" Height="39" Width="32" Stretch="UniformToFill" Margin="0,43,0,0" HorizontalAlignment="Center" VerticalAlignment="Top"/>
-        <Image Grid.Column="1" Name="maestrosIcon" Source="Assets/Icons/maestrosIcon.png" Height="32" VerticalAlignment="Top" HorizontalAlignment="Center" Width="37" Stretch="UniformToFill" Margin="0,46,0,0"/>
-        <Image Grid.Column="2" Name="administracionIcon" Source="Assets/Icons/administracionIcon.png" Height="29" HorizontalAlignment="Center" VerticalAlignment="Top" Width="46" Stretch="UniformToFill" Margin="0,47,0,0"/>
-        <Image Grid.Column="3" Name="estresIcon" Source="Assets/Icons/estresIcon.png" Height="42" HorizontalAlignment="Center" VerticalAlignment="Top" Width="33" Stretch="UniformToFill" Margin="0,40,0,0"/>
+        <Image Grid.Column="0" Name="alumnosIcon" Source="Assets/Icons/alumnosIcon.png" Height="39" Width="31" Stretch="UniformToFill" Margin="34,0,34,21" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <Image Grid.Column="1" Name="maestrosIcon" Source="Assets/Icons/maestrosIcon.png" Height="32" VerticalAlignment="Top" HorizontalAlignment="Center" Width="37" Stretch="UniformToFill" Margin="32,25,30,0"/>
+        <Image Grid.Column="2" Name="administracionIcon" Source="Assets/Icons/administracionIcon.png" Height="29" HorizontalAlignment="Center" VerticalAlignment="Top" Width="46" Stretch="UniformToFill" Margin="27,26,27,0"/>
+        <Image Grid.Column="3" Name="estresIcon" Source="Assets/Icons/estresIcon.png" Height="42" HorizontalAlignment="Center" VerticalAlignment="Top" Width="33" Stretch="UniformToFill" Margin="34,20,34,0"/>
 
     </Grid>
 </UserControl>
