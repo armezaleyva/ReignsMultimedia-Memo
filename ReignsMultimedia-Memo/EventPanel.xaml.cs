@@ -18,11 +18,11 @@ namespace ReignsMultimedia_Memo
     /// <summary>
     /// Interaction logic for SeleccionPanel.xaml
     /// </summary>
-    public partial class SeleccionPanel : UserControl
+    public partial class EventPanel : UserControl
     {
-        public SeleccionPanel()
+        public EventPanel()
         {
-            //InitializeComponent();
+            InitializeComponent();
         }
     }
 }

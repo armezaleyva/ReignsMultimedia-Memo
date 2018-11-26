@@ -30,6 +30,7 @@ namespace ReignsMultimedia_Memo {
 
         public MainWindow() {
             InitializeComponent();
+            panelBase.Focus();
 
             Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
                     null, "left", new List<int> { 0, 0, 0, 0 }, null);
@@ -59,6 +60,8 @@ namespace ReignsMultimedia_Memo {
         double waitTimer = 0.0000;
         double fadeOutTimer = 0.0000;
 
+        bool initializingGameplayWindow = true;
+
         void Update() {
             while (true) {
                 if (gameState == GameState.Intro) {
@@ -69,8 +72,11 @@ namespace ReignsMultimedia_Memo {
                 if (gameState == GameState.Gameplay) {
                     Dispatcher.Invoke(
                     () => {
-                        panelBase.Children.Clear();
-                        panelBase.Children.Add(new GameplayWindow());
+                        if (initializingGameplayWindow) {
+                            panelBase.Children.Clear();
+                            panelBase.Children.Add(new GameplayWindow());
+                            initializingGameplayWindow = false;
+                        }
                     });
                 }
             }
@@ -112,6 +118,14 @@ namespace ReignsMultimedia_Memo {
 
         void AnimateEventOut() {
 
+        }
+
+        private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
+            if (gameState == GameState.Gameplay) {
+                if (e.Key == Key.A || e.Key == Key.Left) {
+                    Application.Current.Shutdown();
+                }
+            }
         }
     }
 }
