@@ -23,13 +23,14 @@ namespace ReignsMultimedia_Memo {
         Stopwatch stopwatch;
         TimeSpan previousTime;
 
-        enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
-        GameState gameState = GameState.Intro;
+        public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
+        public static GameState gameState = GameState.Intro;
 
         List<Event> events = new List<Event>();
 
         public MainWindow() {
             InitializeComponent();
+            panelBase.Focus();
 
             Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
                     null, "left", new List<int> { 0, 0, 0, 0 }, null);
@@ -59,6 +60,8 @@ namespace ReignsMultimedia_Memo {
         double waitTimer = 0.0000;
         double fadeOutTimer = 0.0000;
 
+        bool initializingGameplayWindow = true;
+
         void Update() {
             while (true) {
                 if (gameState == GameState.Intro) {
@@ -66,14 +69,16 @@ namespace ReignsMultimedia_Memo {
                     //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
 
-                if (gameState == GameState.Menu) {
-                    
+                if (gameState == GameState.Gameplay) {
+                    Dispatcher.Invoke(
+                    () => {
+                        if (initializingGameplayWindow) {
+                            panelBase.Children.Clear();
+                            panelBase.Children.Add(new GameplayWindow());
+                            initializingGameplayWindow = false;
+                        }
+                    });
                 }
-                
-                Dispatcher.Invoke(
-                () => {
-                    
-                });
             }
         }
 
@@ -113,6 +118,14 @@ namespace ReignsMultimedia_Memo {
 
         void AnimateEventOut() {
 
+        }
+
+        private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
+            if (gameState == GameState.Gameplay) {
+                if (e.Key == Key.A || e.Key == Key.Left) {
+                    Application.Current.Shutdown();
+                }
+            }
         }
     }
 }

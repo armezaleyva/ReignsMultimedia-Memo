@@ -8,6 +8,6 @@
         ResizeMode="NoResize"
         Title="Reigns Multimedia: Memo" Height="750" Width="400">
     <Grid Background="#060417">
-        <StackPanel Name="panelBase" Opacity="0" VerticalAlignment="Top"/>
+        <StackPanel Name="panelBase" Opacity="0" VerticalAlignment="Top" KeyDown="PanelBase_KeyDown" Focusable="True"/>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@
              d:DesignHeight="750" d:DesignWidth="400" VerticalContentAlignment="Top" HorizontalContentAlignment="Center" Margin="-7.5,0,0,0">
     <Grid>
         <Image Source="Assets/Splashes/menuSplash.png" ClipToBounds="True" Stretch="Fill" />
-        <Button FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="35,468,35,218" FontSize="24" IsDefault="True" Width="330" Height="64" Background="#FFB4B0AF">INICIAR</Button>
-        <Button FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="35,556,35,130" FontSize="24" IsDefault="False" Width="330" Height="64" Background="#FFB4B0AF">SALIR</Button>
+        <Button Name="btnStartGame" Click="BtnStartGame_Click" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="35,468,35,218" FontSize="24" IsDefault="True" Width="330" Height="64" Background="#FFB4B0AF">INICIAR</Button>
+        <Button Name="btnExitGame" Click="BtnExitGame_Click" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Margin="35,556,35,130" FontSize="24" IsDefault="False" Width="330" Height="64" Background="#FFB4B0AF">SALIR</Button>
     </Grid>
 </UserControl>
