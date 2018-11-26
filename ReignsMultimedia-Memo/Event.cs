@@ -23,6 +23,7 @@ namespace ReignsMultimedia_Memo {
 
         string RightReactionText { get; set; }
         List<int> RightReactionEffects { get; set; }
+        // [ Alumnos, Maestros, Administración, Estrés ]
         Event RightReactionSequence { get; set; } 
 
         string LeftReactionText { get; set; }
