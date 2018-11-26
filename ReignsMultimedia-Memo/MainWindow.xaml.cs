@@ -32,7 +32,9 @@ namespace ReignsMultimedia_Memo {
             InitializeComponent();
             panelBase.Focus();
 
-            Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
+            Event event1 = new Event("Sebas", new BitmapImage(new Uri(
+                    "/Assets/Characters/Sebas.png", UriKind.Relative)),
+                    "test", "right", new List<int> { 0, 0, 0, 0 },
                     null, "left", new List<int> { 0, 0, 0, 0 }, null);
             events.Add(event1);
 
@@ -77,6 +79,10 @@ namespace ReignsMultimedia_Memo {
                             panelBase.Children.Add(new GameplayWindow());
                             initializingGameplayWindow = false;
                         }
+                        var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+                        var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+                        eventPanel.lblPersonaje.Text = events[0].EventCharacter;
+                        eventPanel.imgEvent.Source = events[0].CharacterImage;
                     });
                 }
             }
