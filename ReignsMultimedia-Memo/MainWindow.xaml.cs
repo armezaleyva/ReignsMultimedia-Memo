@@ -58,7 +58,7 @@ namespace ReignsMultimedia_Memo {
         }
 
         
-        double introFadeInAnimationDuration = 3.00;
+        double introFadeInAnimationDuration = 2.50;
         double introWaitDuration = 2.00;
         double introFadeOutAnimationDuration = 3.00;
 
@@ -70,6 +70,10 @@ namespace ReignsMultimedia_Memo {
         double fadeOutTimer = 0.0000;
 
         bool initializingGameplayWindow = true;
+        bool transitioningToEvent = true;
+        bool awaitingConfirmation = false;
+
+        Event currentEvent;
 
         void Update() {
             while (true) {
@@ -84,12 +88,14 @@ namespace ReignsMultimedia_Memo {
                         if (initializingGameplayWindow) {
                             panelBase.Children.Clear();
                             panelBase.Children.Add(new GameplayWindow());
+                            panelBase.Focus();
                             initializingGameplayWindow = false;
                         }
-                        var gameplayWindow = (GameplayWindow)panelBase.Children[0];
-                        var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
-                        eventPanel.lblPersonaje.Text = events[0].EventCharacter;
-                        eventPanel.imgEvent.Source = events[0].CharacterImage;
+
+                        if (transitioningToEvent) {
+                            NewEvent();
+                        }
+                        
                     });
                 }
             }
@@ -125,6 +131,34 @@ namespace ReignsMultimedia_Memo {
             previousTime = currentTime;
         }
 
+        void NewEvent() {
+            var random = new Random();
+            var randomIndex = random.Next(events.Count());
+            currentEvent = events[randomIndex];
+            events.RemoveAt(randomIndex);
+
+            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            eventPanel.lblPersonaje.Text = currentEvent.EventCharacter;
+            eventPanel.imgEvent.Source = currentEvent.CharacterImage;
+
+            transitioningToEvent = false;
+        }
+
+        void LeftPrompt() {
+            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            eventPanel.lblRespuesta.Text = currentEvent.LeftReactionText;
+            eventPanel.imgEvent.Margin = new Thickness(0, 0, 60, 80);
+        }
+
+        void RightPrompt() {
+            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            eventPanel.lblRespuesta.Text = currentEvent.RightReactionText;
+            eventPanel.imgEvent.Margin = new Thickness(60, 0, 0, 80);
+        }
+
         void AnimateEventIn() {
 
         }
@@ -135,8 +169,13 @@ namespace ReignsMultimedia_Memo {
 
         private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
             if (gameState == GameState.Gameplay) {
-                if (e.Key == Key.A || e.Key == Key.Left) {
-                    Application.Current.Shutdown();
+                if (!transitioningToEvent) {
+                    if (e.Key == Key.A || e.Key == Key.Left) {
+                        LeftPrompt();
+                    }
+                    if (e.Key == Key.D || e.Key == Key.Right) {
+                        RightPrompt();
+                    }
                 }
             }
         }

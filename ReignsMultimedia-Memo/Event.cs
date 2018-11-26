@@ -21,14 +21,14 @@ namespace ReignsMultimedia_Memo {
         public ImageSource CharacterImage { get; set; }
         public string Text { get; set; }
 
-        string RightReactionText { get; set; }
-        List<int> RightReactionEffects { get; set; }
+        public string RightReactionText { get; set; }
+        public List<int> RightReactionEffects { get; set; }
         // [ Alumnos, Maestros, Administración, Estrés ]
-        Event RightReactionSequence { get; set; } 
+        public Event RightReactionSequence { get; set; }
 
-        string LeftReactionText { get; set; }
-        List<int> LeftReactionEffects { get; set; }
-        Event LeftReactionSequence { get; set; }
+        public string LeftReactionText { get; set; }
+        public List<int> LeftReactionEffects { get; set; }
+        public Event LeftReactionSequence { get; set; }
 
         public Event(string eventCharacter, ImageSource characterImage, string text,
                 string rightReactionText, List<int> rightReactionEffects, Event rightReactionSequence,
