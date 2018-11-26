@@ -36,11 +36,11 @@ namespace ReignsMultimedia_Memo {
                     "/Assets/Characters/Sebas.png", UriKind.Relative)),
                     "Sebas se metió en problemas con un maestro",
                     "Arreglo el problema con el maestro y Sebas", new List<int> { -10, 10, 0, 0 }, null,
-                    "Regaño al Sebas", new List<int> { 0, -20, 0, 0 }, null);
+                    "Regaño al Sebas", new List<int> { -20, 0, 0, 0 }, null);
             Event event2 = new Event("Sofía", new BitmapImage(new Uri(
                     "/Assets/Characters/Sofia.png", UriKind.Relative)),
                     "Memo ¿Me puedes poner las horas de servicio?",
-                    "“Sí, no hay problema”", new List<int> { 20, -10, 0, -10 }, null,
+                    "“Sí, no hay problema”", new List<int> { 20, 0, -10, -10 }, null,
                     "“Primero tienes que hacer un video para viridis”", new List<int> { 10, 0, 20, -20 }, null);
             events.Add(event1);
             events.Add(event2);
@@ -71,7 +71,8 @@ namespace ReignsMultimedia_Memo {
 
         bool initializingGameplayWindow = true;
         bool transitioningToEvent = true;
-        bool awaitingConfirmation = false;
+        bool awaitingRightConfirmation = false;
+        bool awaitingLeftConfirmation = false;
 
         Event currentEvent;
 
@@ -140,16 +141,14 @@ namespace ReignsMultimedia_Memo {
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
             eventPanel.lblPersonaje.Text = currentEvent.EventCharacter;
+            eventPanel.lblEventoDescripcion.Text = currentEvent.Text;
             eventPanel.imgEvent.Source = currentEvent.CharacterImage;
+            eventPanel.imgEvent.Margin = new Thickness(60, 0, 60, 80);
+            eventPanel.lblRespuesta.Text = "";
 
+            awaitingRightConfirmation = false;
+            awaitingLeftConfirmation = false;
             transitioningToEvent = false;
-        }
-
-        void LeftPrompt() {
-            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
-            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
-            eventPanel.lblRespuesta.Text = currentEvent.LeftReactionText;
-            eventPanel.imgEvent.Margin = new Thickness(0, 0, 60, 80);
         }
 
         void RightPrompt() {
@@ -157,6 +156,17 @@ namespace ReignsMultimedia_Memo {
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
             eventPanel.lblRespuesta.Text = currentEvent.RightReactionText;
             eventPanel.imgEvent.Margin = new Thickness(60, 0, 0, 80);
+            awaitingRightConfirmation = true;
+            awaitingLeftConfirmation = false;
+        }
+
+        void LeftPrompt() {
+            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            eventPanel.lblRespuesta.Text = currentEvent.LeftReactionText;
+            eventPanel.imgEvent.Margin = new Thickness(0, 0, 60, 80);
+            awaitingLeftConfirmation = true;
+            awaitingRightConfirmation = false;
         }
 
         void AnimateEventIn() {
@@ -167,14 +177,32 @@ namespace ReignsMultimedia_Memo {
 
         }
 
+        void TriggerEventEffects(List<int> eventEffects) {
+            Stats.estudiantes += eventEffects[0];
+            Stats.maestros += eventEffects[1];
+            Stats.administracion += eventEffects[2];
+            Stats.estres += eventEffects[3];
+            transitioningToEvent = true;
+        }
+
         private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
             if (gameState == GameState.Gameplay) {
                 if (!transitioningToEvent) {
-                    if (e.Key == Key.A || e.Key == Key.Left) {
-                        LeftPrompt();
-                    }
                     if (e.Key == Key.D || e.Key == Key.Right) {
-                        RightPrompt();
+                        if (awaitingRightConfirmation) {
+                            var eventEffects = currentEvent.RightReactionEffects;
+                            TriggerEventEffects(eventEffects);
+                        } else {
+                            RightPrompt();
+                        }
+                    }
+                    else if (e.Key == Key.A || e.Key == Key.Left) {
+                        if (awaitingLeftConfirmation) {
+                            var eventEffects = currentEvent.LeftReactionEffects;
+                            TriggerEventEffects(eventEffects);
+                        } else {
+                            LeftPrompt();
+                        }
                     }
                 }
             }
