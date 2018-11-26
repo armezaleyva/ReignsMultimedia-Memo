@@ -18,9 +18,16 @@ namespace ReignsMultimedia_Memo {
     /// Interaction logic for MainMenu.xaml
     /// </summary>
     public partial class MainMenu : UserControl {
-        public MainMenu()
-        {
+        public MainMenu() {
             InitializeComponent();
+        }
+
+        private void BtnStartGame_Click(object sender, RoutedEventArgs e) {
+            MainWindow.gameState = MainWindow.GameState.Gameplay;
+        }
+
+        private void BtnExitGame_Click(object sender, RoutedEventArgs e) {
+            Application.Current.Shutdown();
         }
     }
 }

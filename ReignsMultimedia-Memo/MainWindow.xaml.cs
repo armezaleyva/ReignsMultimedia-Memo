@@ -23,8 +23,8 @@ namespace ReignsMultimedia_Memo {
         Stopwatch stopwatch;
         TimeSpan previousTime;
 
-        enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
-        GameState gameState = GameState.Intro;
+        public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
+        public static GameState gameState = GameState.Intro;
 
         List<Event> events = new List<Event>();
 
@@ -66,14 +66,13 @@ namespace ReignsMultimedia_Memo {
                     //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
 
-                if (gameState == GameState.Menu) {
-                    
+                if (gameState == GameState.Gameplay) {
+                    Dispatcher.Invoke(
+                    () => {
+                        panelBase.Children.Clear();
+                        panelBase.Children.Add(new GameplayWindow());
+                    });
                 }
-                
-                Dispatcher.Invoke(
-                () => {
-                    
-                });
             }
         }
 

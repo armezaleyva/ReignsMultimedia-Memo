@@ -23,6 +23,8 @@ namespace ReignsMultimedia_Memo
         public GameplayWindow()
         {
             InitializeComponent();
+            PanelStats.Children.Add(new StatsPanel());
+            PanelEvent.Children.Add(new EventPanel());
         }
     }
 }

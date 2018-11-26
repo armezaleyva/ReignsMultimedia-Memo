@@ -22,7 +22,7 @@ namespace ReignsMultimedia_Memo
     {
         public SeleccionPanel()
         {
-            InitializeComponent();
+            //InitializeComponent();
         }
     }
 }
