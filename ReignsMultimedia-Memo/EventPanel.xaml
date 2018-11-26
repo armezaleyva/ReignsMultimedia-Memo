@@ -14,13 +14,13 @@
             </TextBlock.Background> Lalo
         </TextBlock>
 
-        <TextBlock Name="lblEventoDescripcion" Background="#FF666666" TextWrapping="WrapWithOverflow" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" FontSize="16" Margin="1,120,-1,-99" Width="400" Height="125" VerticalAlignment="Top" Padding="30,25,30,27" >Los alumnos se quejaron mucho de Patiño en la evaluación pasada y administración quiere que hables con él</TextBlock>
+        <TextBlock Name="lblEventoDescripcion" Background="#FF666666" TextWrapping="WrapWithOverflow" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" FontSize="16" Margin="1,120,1,-99" Width="400" Height="125" VerticalAlignment="Top" Padding="30,20,20,27" >Los alumnos se quejaron mucho de Patiño en la evaluación pasada y administración quiere que hables con él</TextBlock>
 
 
         <Rectangle Fill="Black" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,80"/>
         <Image Name="imgEvent" Source="Assets/Characters/Cluadia.png" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,80"></Image>
 
-        <TextBlock Name="lblRespuesta" VerticalAlignment="Bottom" HorizontalAlignment="Center" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" TextWrapping="Wrap" Margin="33,0,30,29" FontStyle="Italic">“Diles que tienen que tomar fotos en la Miravalle de noche...solos...”</TextBlock>
+        <TextBlock Name="lblRespuesta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" TextWrapping="Wrap" Margin="60,567,60,0" FontStyle="Italic" TextAlignment="Center">"hola"</TextBlock>
 
 
     </Grid>
