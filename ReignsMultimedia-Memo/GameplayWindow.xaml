@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="400">
     <Grid>
-        <StackPanel Name="PanelStats" Width="400" Height="123" VerticalAlignment="Top" ></StackPanel>
-        <StackPanel Name="PanelEvent" Width="400" Height="627" VerticalAlignment="Top" Margin="0,123,0,0" ></StackPanel>
+        <StackPanel Name="PanelStats" Width="400" Height="82" VerticalAlignment="Top" ></StackPanel>
+        <StackPanel Name="PanelEvent" Width="400" Height="663" VerticalAlignment="Top" Margin="0,87,0,0" ></StackPanel>
     </Grid>
 </UserControl>
