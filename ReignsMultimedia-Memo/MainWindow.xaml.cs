@@ -32,9 +32,18 @@ namespace ReignsMultimedia_Memo {
             InitializeComponent();
             panelBase.Focus();
 
-            Event event1 = new Event("test", "right", new List<int> { 0, 0, 0, 0 },
-                    null, "left", new List<int> { 0, 0, 0, 0 }, null);
+            Event event1 = new Event("Sebas", new BitmapImage(new Uri(
+                    "/Assets/Characters/Sebas.png", UriKind.Relative)),
+                    "Sebas se metió en problemas con un maestro",
+                    "Arreglo el problema con el maestro y Sebas", new List<int> { -10, 10, 0, 0 }, null,
+                    "Regaño al Sebas", new List<int> { 0, -20, 0, 0 }, null);
+            Event event2 = new Event("Sofía", new BitmapImage(new Uri(
+                    "/Assets/Characters/Sofia.png", UriKind.Relative)),
+                    "Memo ¿Me puedes poner las horas de servicio?",
+                    "“Sí, no hay problema”", new List<int> { 20, -10, 0, -10 }, null,
+                    "“Primero tienes que hacer un video para viridis”", new List<int> { 10, 0, 20, -20 }, null);
             events.Add(event1);
+            events.Add(event2);
 
             stopwatch = new Stopwatch();
             stopwatch.Start();
@@ -77,6 +86,10 @@ namespace ReignsMultimedia_Memo {
                             panelBase.Children.Add(new GameplayWindow());
                             initializingGameplayWindow = false;
                         }
+                        var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+                        var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+                        eventPanel.lblPersonaje.Text = events[0].EventCharacter;
+                        eventPanel.imgEvent.Source = events[0].CharacterImage;
                     });
                 }
             }
