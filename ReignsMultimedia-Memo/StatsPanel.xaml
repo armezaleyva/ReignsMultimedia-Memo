@@ -23,8 +23,13 @@
 
         <Image Grid.Column="0" Name="alumnosIcon" Source="Assets/Icons/alumnosIcon.png" Height="39" Width="31" Stretch="UniformToFill" Margin="34,0,34,21" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
         <Image Grid.Column="1" Name="maestrosIcon" Source="Assets/Icons/maestrosIcon.png" Height="32" VerticalAlignment="Top" HorizontalAlignment="Center" Width="37" Stretch="UniformToFill" Margin="32,25,30,0"/>
-        <Image  Grid.Column="2" Name="administracionIcon" Source="Assets/Icons/administracionIcon.png" Height="29" HorizontalAlignment="Center" VerticalAlignment="Top" Width="46" Stretch="UniformToFill" Margin="27,26,27,0"/>
+        <Image Grid.Column="2" Name="administracionIcon" Source="Assets/Icons/administracionIcon.png" Height="29" HorizontalAlignment="Center" VerticalAlignment="Top" Width="46" Stretch="UniformToFill" Margin="27,26,27,0"/>
         <Image Grid.Column="3" Name="estresIcon" Source="Assets/Icons/estresIcon.png" Height="42" HorizontalAlignment="Center" VerticalAlignment="Top" Width="33" Stretch="UniformToFill" Margin="34,20,34,0"/>
+
+        <Rectangle Name="indicatorAlumnos" Fill="#FF1A1209" RadiusY="10" RadiusX="10" Margin="46,68,46,6" Opacity="1" Grid.Column="0"/>
+        <Rectangle Name="indicatorMaestros" Fill="#FF1A1209" RadiusY="10" RadiusX="10" Margin="46,68,46,6" Opacity="0" Grid.Column="1" />
+        <Rectangle Name="indicatorAdministracion" Fill="#FF1A1209" RadiusY="10" RadiusX="10" Margin="46,68,46,6" Opacity="0" Grid.Column="2" />
+        <Rectangle Name="indicatorEstres" Fill="#FF1A1209" RadiusY="10" RadiusX="10" Margin="46,68,46,6" Opacity="0" Grid.Column="3" />
 
     </Grid>
 </UserControl>
