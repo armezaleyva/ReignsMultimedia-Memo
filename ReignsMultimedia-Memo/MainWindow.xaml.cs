@@ -187,14 +187,7 @@ namespace ReignsMultimedia_Memo {
 
         void FadeIndicators(List<int> eventEffects, StatsPanel statsPanel) {
             ResetTimers();
-
-            Dispatcher.Invoke(
-            () => {
-                statsPanel.indicatorAlumnos.Opacity = 0;
-                statsPanel.indicatorMaestros.Opacity = 0;
-                statsPanel.indicatorAdministracion.Opacity = 0;
-                statsPanel.indicatorEstres.Opacity = 0;
-            });
+            Dispatcher.Invoke(() => { ResetIndicators(statsPanel); });
 
             previousTime = stopwatch.Elapsed;
             while (true) {
