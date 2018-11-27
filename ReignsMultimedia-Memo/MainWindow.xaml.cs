@@ -25,6 +25,7 @@ namespace ReignsMultimedia_Memo {
 
         public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
         public static GameState gameState = GameState.Intro;
+        enum DecisionMade { Right, Left };
 
         List<Event> events = new List<Event>();
 
@@ -32,6 +33,21 @@ namespace ReignsMultimedia_Memo {
             InitializeComponent();
             panelBase.Focus();
 
+            SequenceEvent sequenceEvent0 = new SequenceEvent("Alex", new BitmapImage(new Uri(
+                    "/Assets/Characters/Betito.png", UriKind.Relative)),
+                    "“¿...Cómo hago un te equis te...?”",
+                    "“¡¿QUÉ?!”", new List<int> { 0, 0, 0, 30 }, null,
+                    "“¿¡QUÉ!?”", new List<int> { 0, 0, 0, 30 }, null);
+            SequenceEvent sequenceEvent1 = new SequenceEvent("Alex", new BitmapImage(new Uri(
+                    "/Assets/Characters/Betito.png", UriKind.Relative)),
+                    "“¿Cómo se hace eso?”",
+                    "“¿Qué cosa?”", new List<int> { 0, 0, 0, 0 }, sequenceEvent0,
+                    "“¡YA ALEX! déjame en paz, estás reprobado”", new List<int> { -20, 0, 0, -20 }, null);
+            Event event0 = new Event("Alex", new BitmapImage(new Uri(
+                    "/Assets/Characters/Betito.png", UriKind.Relative)),
+                    "“Oiga profe no me deja subir la práctica al portal...”",
+                    "“Súbela a tu drive y pon el link en un .txt”", new List<int> { 10, 0, 0, 10 }, sequenceEvent1,
+                    "“Pues ni modo, tienes cero”", new List<int> { -20, 0, 0, -20 }, null);
             Event event1 = new Event("Sebas", new BitmapImage(new Uri(
                     "/Assets/Characters/Sebas.png", UriKind.Relative)),
                     "Sebas se metió en problemas con un maestro",
@@ -39,9 +55,10 @@ namespace ReignsMultimedia_Memo {
                     "Regaño al Sebas", new List<int> { -20, 0, 0, 0 }, null);
             Event event2 = new Event("Sofía", new BitmapImage(new Uri(
                     "/Assets/Characters/Sofia.png", UriKind.Relative)),
-                    "Memo ¿Me puedes poner las horas de servicio?",
+                    "“Memo ¿Me puedes poner las horas de servicio?”",
                     "“Sí, no hay problema”", new List<int> { 20, 0, -10, -10 }, null,
                     "“Primero tienes que hacer un video para viridis”", new List<int> { 10, 0, 20, -20 }, null);
+            events.Add(event0);
             events.Add(event1);
             events.Add(event2);
 
@@ -75,7 +92,7 @@ namespace ReignsMultimedia_Memo {
         bool awaitingRightConfirmation = false;
         bool awaitingLeftConfirmation = false;
 
-        Event currentEvent;
+        Event currentEvent = null;
 
         void Update() {
             while (true) {
@@ -135,10 +152,13 @@ namespace ReignsMultimedia_Memo {
         }
 
         void NewEvent() {
-            var random = new Random();
-            var randomIndex = random.Next(events.Count());
-            currentEvent = events[randomIndex];
-            events.RemoveAt(randomIndex);
+            if (currentEvent == null) {
+                var random = new Random();
+                var randomIndex = random.Next(events.Count());
+                currentEvent = events[randomIndex];
+                events.RemoveAt(randomIndex);
+                Stats.currentWeek += 1;
+            }
 
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
@@ -236,21 +256,39 @@ namespace ReignsMultimedia_Memo {
 
         }
 
-        void TriggerEventEffects(List<int> eventEffects) {
+        void TriggerEventEffects(List<int> eventEffects, DecisionMade decisionMade) {
             Stats.estudiantes += eventEffects[0];
             Stats.maestros += eventEffects[1];
             Stats.administracion += eventEffects[2];
             Stats.estres += eventEffects[3];
+
+            if (decisionMade == DecisionMade.Right) {
+                if (currentEvent.RightReactionSequence == null) {
+                    currentEvent = null;
+                } else {
+                    currentEvent = currentEvent.RightReactionSequence;
+                }
+            } else {
+                if (currentEvent.LeftReactionSequence == null) {
+                    currentEvent = null;
+                }
+                else {
+                    currentEvent = currentEvent.LeftReactionSequence;
+                }
+            }
+
             transitioningToEvent = true;
         }
 
         private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
             if (gameState == GameState.Gameplay) {
                 if (!transitioningToEvent) {
+                    DecisionMade decisionMade;
                     if (e.Key == Key.D || e.Key == Key.Right) {
                         var eventEffects = currentEvent.RightReactionEffects;
                         if (awaitingRightConfirmation) {
-                            TriggerEventEffects(eventEffects);
+                            decisionMade = DecisionMade.Right;
+                            TriggerEventEffects(eventEffects, decisionMade);
                         } else {
                             RightPrompt(eventEffects);
                         }
@@ -258,7 +296,8 @@ namespace ReignsMultimedia_Memo {
                     else if (e.Key == Key.A || e.Key == Key.Left) {
                         var eventEffects = currentEvent.LeftReactionEffects;
                         if (awaitingLeftConfirmation) {
-                            TriggerEventEffects(eventEffects);
+                            decisionMade = DecisionMade.Left;
+                            TriggerEventEffects(eventEffects, decisionMade);
                         } else {
                             LeftPrompt(eventEffects);
                         }
