@@ -61,6 +61,7 @@ namespace ReignsMultimedia_Memo {
         double introFadeInAnimationDuration = 2.50;
         double introWaitDuration = 2.00;
         double introFadeOutAnimationDuration = 3.00;
+        double indicatorFadeInDuration = 0.60;
 
         double fadeIn = 0.0000;
         double fadeOut = 1.000;
@@ -94,6 +95,7 @@ namespace ReignsMultimedia_Memo {
                         }
 
                         if (transitioningToEvent) {
+                            ResetTimers();
                             NewEvent();
                         }
                         
@@ -140,6 +142,8 @@ namespace ReignsMultimedia_Memo {
 
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
+            ResetIndicators(statsPanel);
             eventPanel.lblPersonaje.Text = currentEvent.EventCharacter;
             eventPanel.lblEventoDescripcion.Text = currentEvent.Text;
             eventPanel.imgEvent.Source = currentEvent.CharacterImage;
@@ -151,22 +155,84 @@ namespace ReignsMultimedia_Memo {
             transitioningToEvent = false;
         }
 
-        void RightPrompt() {
+        void RightPrompt(List<int> eventEffects) {
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
+
+            ThreadStart threadStart = new ThreadStart(new Action(() => FadeIndicators(eventEffects, statsPanel)));
+            Thread thread = new Thread(threadStart);
+            thread.Start();
+
             eventPanel.lblRespuesta.Text = currentEvent.RightReactionText;
             eventPanel.imgEvent.Margin = new Thickness(60, 0, 0, 80);
             awaitingRightConfirmation = true;
             awaitingLeftConfirmation = false;
         }
 
-        void LeftPrompt() {
+        void LeftPrompt(List<int> eventEffects) {
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
+            var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
+
+            ThreadStart threadStart = new ThreadStart(new Action(() => FadeIndicators(eventEffects, statsPanel)));
+            Thread thread = new Thread(threadStart);
+            thread.Start();
+
             eventPanel.lblRespuesta.Text = currentEvent.LeftReactionText;
             eventPanel.imgEvent.Margin = new Thickness(0, 0, 60, 80);
             awaitingLeftConfirmation = true;
             awaitingRightConfirmation = false;
+        }
+
+        void FadeIndicators(List<int> eventEffects, StatsPanel statsPanel) {
+            ResetTimers();
+
+            Dispatcher.Invoke(
+            () => {
+                statsPanel.indicatorAlumnos.Opacity = 0;
+                statsPanel.indicatorMaestros.Opacity = 0;
+                statsPanel.indicatorAdministracion.Opacity = 0;
+                statsPanel.indicatorEstres.Opacity = 0;
+            });
+
+            previousTime = stopwatch.Elapsed;
+            while (true) {
+                var currentTime = stopwatch.Elapsed;
+                var deltaTime = currentTime - previousTime;
+
+                if (fadeInTimer < indicatorFadeInDuration) {
+                    fadeInTimer += deltaTime.TotalSeconds;
+                    fadeIn += deltaTime.TotalSeconds / indicatorFadeInDuration;
+                    Dispatcher.Invoke(
+                    () => {
+                        if (eventEffects[0] != 0) {
+                            statsPanel.indicatorAlumnos.Opacity = fadeIn;
+                        }
+                        if (eventEffects[1] != 0) {
+                            statsPanel.indicatorMaestros.Opacity = fadeIn;
+                        }
+                        if (eventEffects[2] != 0) {
+                            statsPanel.indicatorAdministracion.Opacity = fadeIn;
+                        }
+                        if (eventEffects[3] != 0) {
+                            statsPanel.indicatorEstres.Opacity = fadeIn;
+                        }
+                    });
+                    
+                } else {
+                    break;
+                }
+
+                previousTime = currentTime;
+            }
+        }
+
+        void ResetIndicators(StatsPanel statsPanel) {
+            statsPanel.indicatorAlumnos.Opacity = 0;
+            statsPanel.indicatorMaestros.Opacity = 0;
+            statsPanel.indicatorAdministracion.Opacity = 0;
+            statsPanel.indicatorEstres.Opacity = 0;
         }
 
         void AnimateEventIn() {
@@ -189,23 +255,32 @@ namespace ReignsMultimedia_Memo {
             if (gameState == GameState.Gameplay) {
                 if (!transitioningToEvent) {
                     if (e.Key == Key.D || e.Key == Key.Right) {
+                        var eventEffects = currentEvent.RightReactionEffects;
                         if (awaitingRightConfirmation) {
-                            var eventEffects = currentEvent.RightReactionEffects;
                             TriggerEventEffects(eventEffects);
                         } else {
-                            RightPrompt();
+                            RightPrompt(eventEffects);
                         }
                     }
                     else if (e.Key == Key.A || e.Key == Key.Left) {
+                        var eventEffects = currentEvent.LeftReactionEffects;
                         if (awaitingLeftConfirmation) {
-                            var eventEffects = currentEvent.LeftReactionEffects;
                             TriggerEventEffects(eventEffects);
                         } else {
-                            LeftPrompt();
+                            LeftPrompt(eventEffects);
                         }
                     }
                 }
             }
+        }
+
+        void ResetTimers() {
+            fadeInTimer = 0;
+            waitTimer = 0;
+            fadeOutTimer = 0;
+
+            fadeIn = 0;
+            fadeOut = 1;
         }
     }
 }
