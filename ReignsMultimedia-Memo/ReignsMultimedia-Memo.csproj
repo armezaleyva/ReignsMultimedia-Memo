@@ -35,7 +35,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>logomemo_D1F_icon.ico</ApplicationIcon>
+    <ApplicationIcon>Assets\logomemo_D1F_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -79,6 +79,9 @@
     <Compile Include="StatsPanel.xaml.cs">
       <DependentUpon>StatsPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="VictoryPanel.xaml.cs">
+      <DependentUpon>VictoryPanel.xaml</DependentUpon>
+    </Compile>
     <Page Include="GameOverPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -119,6 +122,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="StatsPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="VictoryPanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -265,7 +272,7 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="logomemo_D1F_icon.ico" />
+    <Resource Include="Assets\logomemo_D1F_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\Characters\Alex.png" />

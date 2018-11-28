@@ -1,0 +1,14 @@
+﻿<UserControl x:Class="ReignsMultimedia_Memo.VictoryPanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ReignsMultimedia_Memo"
+             mc:Ignorable="d" 
+             d:DesignHeight="750" d:DesignWidth="400">
+    <Grid Background="#060417">
+        <Image Name="imgVictory"  Source="assets/logoMemo.png" Opacity="1"></Image>
+        <TextBlock Name="lblVictoryMessage1" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="40" TextWrapping="Wrap" TextAlignment="Center" Margin="0,36,0,-36" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Opacity="1">Terminaste el semestre como todo un rey</TextBlock>
+        <TextBlock Name="lblVictoryMessage2" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="40" TextWrapping="Wrap" TextAlignment="Center" Margin="0,36,0,-36" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Opacity="0">Te libraste por ahora...</TextBlock>
+    </Grid>
+</UserControl>
