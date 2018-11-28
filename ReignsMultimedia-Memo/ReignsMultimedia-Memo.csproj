@@ -260,5 +260,18 @@
   <ItemGroup>
     <Resource Include="logomemo_D1F_icon.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Characters\Alex.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\Minigame\alumno1.png" />
+    <Resource Include="Assets\Minigame\alumno2.png" />
+    <Resource Include="Assets\Minigame\alumno3.png" />
+    <Resource Include="Assets\Minigame\alumno4.png" />
+    <Resource Include="Assets\Minigame\alumno5.png" />
+    <Resource Include="Assets\Minigame\alumno6.png" />
+    <Resource Include="Assets\Minigame\carro.png" />
+    <Resource Include="Assets\Minigame\Memo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
