@@ -26,6 +26,8 @@ namespace ReignsMultimedia_Memo {
         public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
         public static GameState gameState = GameState.Intro;
         enum DecisionMade { Right, Left };
+        enum Direction { Up, Down, Left, Right, None };
+        Direction playerDirection = Direction.None;
 
         List<Event> events = new List<Event>();
 
@@ -316,7 +318,9 @@ namespace ReignsMultimedia_Memo {
                     Dispatcher.Invoke(
                     () => {
                         panelBase.Children.Clear();
-                        // Empezar Minijuego
+                        panelBase.Children.Add(new MinigamePanel());
+                        var currentTime = stopwatch.Elapsed;
+                        var deltaTime = currentTime - previousTime;
                     });
                     
                 }
@@ -575,6 +579,37 @@ namespace ReignsMultimedia_Memo {
                             LeftPrompt(eventEffects, decisionMade);
                         }
                     }
+                }
+            }
+            else if (gameState == GameState.Minigame) {
+                if (e.Key == Key.Up || e.Key == Key.W) {
+                    playerDirection = Direction.Up;
+                }
+                if (e.Key == Key.Down || e.Key == Key.S) {
+                    playerDirection = Direction.Down;
+                }
+                if (e.Key == Key.Left || e.Key == Key.A) {
+                    playerDirection = Direction.Left;
+                }
+                if (e.Key == Key.Right || e.Key == Key.D) {
+                    playerDirection = Direction.Right;
+                }
+            }
+        }
+
+        private void miCanvas_KeyUp(object sender, KeyEventArgs e) {
+            if (gameState == GameState.Minigame) {
+                if (e.Key == Key.Up && playerDirection == Direction.Up) {
+                    playerDirection = Direction.None;
+                }
+                if (e.Key == Key.Down && playerDirection == Direction.Down) {
+                    playerDirection = Direction.None;
+                }
+                if (e.Key == Key.Left && playerDirection == Direction.Left) {
+                    playerDirection = Direction.None;
+                }
+                if (e.Key == Key.Right && playerDirection == Direction.Right) {
+                    playerDirection = Direction.None;
                 }
             }
         }
