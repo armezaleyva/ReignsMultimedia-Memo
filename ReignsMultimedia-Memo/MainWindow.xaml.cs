@@ -36,6 +36,7 @@ namespace ReignsMultimedia_Memo {
         public MainWindow() {
             InitializeComponent();
             panelBase.Focus();
+            Stats.estres = 150;
 
             //List - Sequence Events
             SequenceEvent sequenceEvent20_1 = new SequenceEvent("Luis Mercado", new BitmapImage(new Uri(
