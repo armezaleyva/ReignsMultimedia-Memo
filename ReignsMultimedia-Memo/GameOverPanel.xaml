@@ -10,5 +10,8 @@
         <TextBlock FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="48" TextWrapping="Wrap" TextAlignment="Center" Margin="0,36,0,-36" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White">¡No pudiste terminar el semestre!</TextBlock>
         <Image Name="imgGameOverInfo" Source="Assets/Icons/AlumnosBIG.png" Margin="102,262,111,248" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Name="lblGameOverInfo"  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Margin="10,524,30,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White">Pasaste más tiempo resolviendo problemas de otros maestros y descuidaste la preparación de tus clases</TextBlock>
+
+        <TextBlock  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" TextAlignment="Center" Margin="46,680,20,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Width="334">semanas de las 16 del semestre</TextBlock>
+        <TextBlock Name="lblFinalScore" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" TextAlignment="Center" Margin="56,680,335,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White">2</TextBlock>
     </Grid>
 </UserControl>

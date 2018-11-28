@@ -51,7 +51,7 @@ namespace ReignsMultimedia_Memo {
                     "“Mmm, mínimo vamos a ver si la geometría la hiciste bien”", new List<int> { 0, 0, 0, 10 }, sequenceEvent12_2);
             SequenceEvent sequenceEvent10_1 = new SequenceEvent("Betito", new BitmapImage(new Uri(
                     "/Assets/Characters/Betito.png", UriKind.Relative)),
-                    "“Pues hice lo que pud...”",
+                    "“Pues hice lo que pude...”",
                     "“No, no, está todo mal. Cero”", new List<int> { -20, 0, 0, 20 }, null,
                     "“No, no, está todo mal. Cero”", new List<int> { -20, 0, 0, 20 }, null);
             SequenceEvent sequenceEvent1_2 = new SequenceEvent("Alex", new BitmapImage(new Uri(
@@ -187,7 +187,7 @@ namespace ReignsMultimedia_Memo {
                     "(Mentir) “No hay problema, iré”", new List<int> { 0, -10, -20, -20 }, null);
             Event event25 = new Event("Lalo Núñez", new BitmapImage(new Uri(
                     "/Assets/Characters/Lalo.png", UriKind.Relative)),
-                    "“Mañana hay junta de academia a las 8 de la mañana en sábado”",
+                    "“Oye Memo, necesitamos hablar de los alumnos de multimedia…”",
                     "“...¿Ahora qué hicieron…?”", new List<int> { 0, 0, 10, 20 }, null,
                     "“Me acabo de acordar que estoy ocupado…”", new List<int> { 0, 0, -20, -20 }, null);
             Event event26 = new Event("Molle", new BitmapImage(new Uri(
@@ -500,6 +500,7 @@ namespace ReignsMultimedia_Memo {
                 gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
                     "/Assets/Icons/EstresBIG.png", UriKind.Relative));
             }
+            gameOverPanel.lblFinalScore.Text = Stats.currentWeek.ToString();
         }
 
         void ResetIndicators(StatsPanel statsPanel) {

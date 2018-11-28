@@ -20,7 +20,7 @@
 
 
         <Rectangle Fill="Black" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,80"/>
-        <Image Name="imgEvent" Source="Assets/Characters/Cluadia.png" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,80"></Image>
+        <Image Name="imgEvent" Source="Assets/Characters/Claudia.png" Width="280" Height="280" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="60,0,60,80"></Image>
 
         <TextBlock Name="lblRespuesta" VerticalAlignment="Top" HorizontalAlignment="Center" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" TextWrapping="Wrap" Margin="60,567,60,0" FontStyle="Italic" TextAlignment="Center">"hola"</TextBlock>
 
