@@ -298,6 +298,8 @@ namespace ReignsMultimedia_Memo {
                             initializingGameplayWindow = false;
                         }
 
+                        UpdateStatIndicators();
+
                         if (transitioningToEvent) {
                             ResetTimers();
                             NewEvent();
@@ -319,6 +321,21 @@ namespace ReignsMultimedia_Memo {
                     });
                 }
             }
+        }
+
+        void UpdateStatIndicators() {
+            double baseHeightAlumnos = 39.00;
+            double baseHeightMaestros = 32.00;
+            double baseHeightAdministracion = 29.00;
+            double baseHeightEstres = 42.00;
+
+            var gameplayWindow = (GameplayWindow)panelBase.Children[0];
+            var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
+
+            statsPanel.alumnosIcon.Height = (100 - Stats.estudiantes) * (baseHeightAlumnos / 100.00);
+            statsPanel.maestrosIcon.Height = (100 - Stats.maestros) * (baseHeightMaestros / 100.00);
+            statsPanel.administracionIcon.Height = (100 - Stats.administracion) * (baseHeightAdministracion / 100.00);
+            statsPanel.estresIcon.Height = (100 - Stats.estres) * (baseHeightEstres / 100.00);
         }
 
         void AnimateIntro() {
