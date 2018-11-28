@@ -291,6 +291,10 @@ namespace ReignsMultimedia_Memo {
                 else if (gameState == GameState.Gameplay) {
                     Dispatcher.Invoke(
                     () => {
+                        if (Stats.currentWeek > 16) {
+                            // Win Game
+                        }
+
                         if (initializingGameplayWindow) {
                             panelBase.Children.Clear();
                             panelBase.Children.Add(new GameplayWindow());
@@ -309,8 +313,12 @@ namespace ReignsMultimedia_Memo {
                 }
 
                 else if (gameState == GameState.Minigame) {
-                    panelBase.Children.Clear();
-                    // Empezar Minijuego
+                    Dispatcher.Invoke(
+                    () => {
+                        panelBase.Children.Clear();
+                        // Empezar Minijuego
+                    });
+                    
                 }
 
                 else if (gameState == GameState.Gameover) {
