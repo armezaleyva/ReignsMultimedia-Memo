@@ -288,7 +288,7 @@ namespace ReignsMultimedia_Memo {
                     //Dispatcher.Invoke(new Action(() => AnimateIntro()));
                 }
 
-                if (gameState == GameState.Gameplay) {
+                else if (gameState == GameState.Gameplay) {
                     Dispatcher.Invoke(
                     () => {
                         if (initializingGameplayWindow) {
@@ -303,6 +303,19 @@ namespace ReignsMultimedia_Memo {
                             NewEvent();
                         }
                         
+                    });
+                }
+
+                else if (gameState == GameState.Minigame) {
+
+                }
+
+                else if (gameState == GameState.Gameover) {
+                    Dispatcher.Invoke(
+                    () => {
+                        panelBase.Children.Clear();
+                        panelBase.Children.Add(new Assets.GameOverPanel());
+                        GameOver();
                     });
                 }
             }
@@ -429,6 +442,41 @@ namespace ReignsMultimedia_Memo {
             }
         }
 
+        void GameOver() {
+            var gameOverPanel = (Assets.GameOverPanel)panelBase.Children[0];
+            if (Stats.estudiantes <= 0) {
+                gameOverPanel.lblGameOverInfo.Text = "Tus alumnos son infelices debido a tu dura mano. Necesitan ir al psicólogo y ya no van a la escuela.";
+            }
+            else if (Stats.estudiantes >= 100) {
+                gameOverPanel.lblGameOverInfo.Text = "Tus alumnos se aprovechan de ti y no te respetan más. Dejaron de presentarse a sus clases";
+            }
+            else if (Stats.maestros <= 0) {
+                gameOverPanel.lblGameOverInfo.Text = "Te enemistaste con los otros maestros y no tienes amigos en la escuela.";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/MaestrosBIG.png", UriKind.Relative));
+            }
+            else if (Stats.maestros >= 100) {
+                gameOverPanel.lblGameOverInfo.Text = "Pasaste más tiempo resolviendo problemas de otros maestros y descuidaste la preparación de tus clases";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/MaestrosBIG.png", UriKind.Relative));
+            }
+            else if (Stats.administracion <= 0) {
+                gameOverPanel.lblGameOverInfo.Text = "Administración está muy descontento con tu desempeño y te despidieron de la institución";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/AdministracionBIG.png", UriKind.Relative));
+            }
+            else if (Stats.administracion >= 100) {
+                gameOverPanel.lblGameOverInfo.Text = "Administración no te respeta y te traen de mandadero";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/AdministracionBIG.png", UriKind.Relative));
+            }
+            else if (Stats.estres <= 0) {
+                gameOverPanel.lblGameOverInfo.Text = "Te relajaste demasiado y tienes todos tus deberes encima. Ya no tienes tiempo para resolverlo";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/EstresBIG.png", UriKind.Relative));
+            }
+        }
+
         void ResetIndicators(StatsPanel statsPanel) {
             statsPanel.indicatorAlumnos.Opacity = 0;
             statsPanel.indicatorMaestros.Opacity = 0;
@@ -436,19 +484,21 @@ namespace ReignsMultimedia_Memo {
             statsPanel.indicatorEstres.Opacity = 0;
         }
 
-        void AnimateEventIn() {
-
-        }
-
-        void AnimateEventOut() {
-
-        }
-
         void TriggerEventEffects(List<int> eventEffects, DecisionMade decisionMade) {
             Stats.estudiantes += eventEffects[0];
             Stats.maestros += eventEffects[1];
             Stats.administracion += eventEffects[2];
             Stats.estres += eventEffects[3];
+
+            if (Stats.estudiantes <= 0 || Stats.estudiantes >= 100 ||
+                Stats.maestros <= 0 || Stats.maestros >= 100 ||
+                Stats.administracion <= 0 || Stats.administracion >= 100 ||
+                Stats.estres <= 0) {
+                gameState = GameState.Gameover;
+            }
+            else if (Stats.estres >= 100) {
+                gameState = GameState.Minigame;
+            }
 
             if (decisionMade == DecisionMade.Right) {
                 if (currentEvent.RightReactionSequence == null) {
@@ -464,7 +514,9 @@ namespace ReignsMultimedia_Memo {
                 }
             }
 
-            transitioningToEvent = true;
+            if (gameState == GameState.Gameplay) {
+                transitioningToEvent = true;
+            }
         }
 
         private void PanelBase_KeyDown(object sender, KeyEventArgs e) {
