@@ -31,7 +31,7 @@ namespace ReignsMultimedia_Memo {
 
         List<Event> events = new List<Event>();
 
-        double playerSpeed = 60;
+        double playerSpeed = 160;
 
         public MainWindow() {
             InitializeComponent();
@@ -332,6 +332,38 @@ namespace ReignsMultimedia_Memo {
                         var currentTime = stopwatch.Elapsed;
                         var deltaTime = currentTime - previousTime;
                         MovePlayer(deltaTime);
+                        var minigamePanel = (MinigamePanel)panelBase.Children[0];
+                        var student1 = minigamePanel.Alumno1MG;
+                        var student2 = minigamePanel.Alumno2MG;
+                        var student3 = minigamePanel.Alumno3MG;
+                        var student4 = minigamePanel.Alumno4MG;
+                        var student5 = minigamePanel.Alumno5MG;
+                        var student6 = minigamePanel.Alumno6MG;
+
+                        double xStudent1 = Canvas.GetLeft(student1);
+                        double yStudent1 = Canvas.GetTop(student1);
+                        double xStudent2 = Canvas.GetLeft(student2);
+                        double yStudent2 = Canvas.GetTop(student2);
+                        double xStudent3 = Canvas.GetLeft(student3);
+                        double yStudent3 = Canvas.GetTop(student3);
+                        double xStudent4 = Canvas.GetLeft(student4);
+                        double yStudent4 = Canvas.GetTop(student4);
+                        double xStudent5 = Canvas.GetLeft(student5);
+                        double yStudent5 = Canvas.GetTop(student5);
+                        double xStudent6 = Canvas.GetLeft(student6);
+                        double yStudent6 = Canvas.GetTop(student6);
+
+                        var imgMemo = minigamePanel.MemoMG;
+                        double yPlayer = Canvas.GetTop(imgMemo);
+                        double xPlayer = Canvas.GetLeft(imgMemo);
+                        var xHitbox = xPlayer + imgMemo.Width;
+                        var yHitbox = yPlayer + imgMemo.Height;
+
+                        if ((xHitbox >= xStudent1 && xPlayer <= xStudent1 + student1.Width) &&
+                            (yHitbox >= yStudent1 && yPlayer <= yStudent1 + student1.Height)) {
+                            gameState = GameState.Gameover;
+                        }
+
                         previousTime = currentTime;
                     });
                     
@@ -554,6 +586,11 @@ namespace ReignsMultimedia_Memo {
                 gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
                     "/Assets/Icons/EstresBIG.png", UriKind.Relative));
             }
+            else {
+                gameOverPanel.lblGameOverInfo.Text = "Memo murió de estrés";
+                gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
+                    "/Assets/Icons/EstresBIG.png", UriKind.Relative));
+            }
             gameOverPanel.lblScoreFinal.Text = Stats.currentWeek.ToString();
         }
 
@@ -641,16 +678,16 @@ namespace ReignsMultimedia_Memo {
 
         private void PanelBase_KeyUp(object sender, KeyEventArgs e) {
             if (gameState == GameState.Minigame) {
-                if (e.Key == Key.Up && playerDirection == Direction.Up) {
+                if ((e.Key == Key.Up || e.Key == Key.W) && playerDirection == Direction.Up) {
                     playerDirection = Direction.None;
                 }
-                if (e.Key == Key.Down && playerDirection == Direction.Down) {
+                if ((e.Key == Key.Down || e.Key == Key.S) && playerDirection == Direction.Down) {
                     playerDirection = Direction.None;
                 }
-                if (e.Key == Key.Left && playerDirection == Direction.Left) {
+                if ((e.Key == Key.Left || e.Key == Key.A) && playerDirection == Direction.Left) {
                     playerDirection = Direction.None;
                 }
-                if (e.Key == Key.Right && playerDirection == Direction.Right) {
+                if ((e.Key == Key.Right || e.Key == Key.D) && playerDirection == Direction.Right) {
                     playerDirection = Direction.None;
                 }
             }
