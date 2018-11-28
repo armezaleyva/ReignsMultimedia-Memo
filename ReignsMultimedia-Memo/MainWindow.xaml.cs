@@ -459,8 +459,7 @@ namespace ReignsMultimedia_Memo {
             } else {
                 if (currentEvent.LeftReactionSequence == null) {
                     currentEvent = null;
-                }
-                else {
+                } else {
                     currentEvent = currentEvent.LeftReactionSequence;
                 }
             }

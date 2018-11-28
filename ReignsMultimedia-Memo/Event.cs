@@ -32,7 +32,7 @@ namespace ReignsMultimedia_Memo {
 
         public Event(string eventCharacter, ImageSource characterImage, string text,
                 string rightReactionText, List<int> rightReactionEffects, Event rightReactionSequence,
-                string leftReactionText, List<int> leftReactionEffects, Event leftReacionSequence) {
+                string leftReactionText, List<int> leftReactionEffects, Event leftReactionSequence) {
             EventCharacter = eventCharacter;
             CharacterImage = characterImage;
             Text = text;
@@ -41,7 +41,7 @@ namespace ReignsMultimedia_Memo {
             RightReactionSequence = rightReactionSequence;
             LeftReactionText = leftReactionText;
             LeftReactionEffects = leftReactionEffects;
-            LeftReactionSequence = LeftReactionSequence;
+            LeftReactionSequence = leftReactionSequence;
         }
     }
 }
