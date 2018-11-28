@@ -321,6 +321,7 @@ namespace ReignsMultimedia_Memo {
                         panelBase.Children.Add(new MinigamePanel());
                         var currentTime = stopwatch.Elapsed;
                         var deltaTime = currentTime - previousTime;
+                        MovePlayer(deltaTime);
                     });
                     
                 }
@@ -410,6 +411,10 @@ namespace ReignsMultimedia_Memo {
             awaitingRightConfirmation = false;
             awaitingLeftConfirmation = false;
             transitioningToEvent = false;
+        }
+
+        void MovePlayer(TimeSpan deltaTime) {
+
         }
 
         void RightPrompt(List<int> eventEffects, DecisionMade decisionMade) {
