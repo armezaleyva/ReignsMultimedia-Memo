@@ -324,7 +324,7 @@ namespace ReignsMultimedia_Memo {
                         if (initializingMinigameWindow) {
                             panelBase.Children.Clear();
                             panelBase.Children.Add(new MinigamePanel());
-                            panelBase.Focus();
+                            gridBase.Background = Brushes.White;
                             initializingMinigameWindow = false;
                             previousTime = stopwatch.Elapsed;
                         }
