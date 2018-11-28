@@ -309,7 +309,8 @@ namespace ReignsMultimedia_Memo {
                 }
 
                 else if (gameState == GameState.Minigame) {
-
+                    panelBase.Children.Clear();
+                    // Empezar Minijuego
                 }
 
                 else if (gameState == GameState.Gameover) {
