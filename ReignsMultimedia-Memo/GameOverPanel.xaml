@@ -11,7 +11,7 @@
         <Image Name="imgGameOverInfo" Source="Assets/Icons/AlumnosBIG.png" Margin="102,262,111,248" VerticalAlignment="Center" HorizontalAlignment="Center"/>
         <TextBlock Name="lblGameOverInfo"  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" Margin="10,524,30,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White">Pasaste más tiempo resolviendo problemas de otros maestros y descuidaste la preparación de tus clases</TextBlock>
 
-        <TextBlock  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" TextAlignment="Center" Margin="46,680,20,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Width="334">semanas de las 16 del semestre</TextBlock>
-        <TextBlock Name="lblFinalScore" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" TextAlignment="Center" Margin="56,680,335,0" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White">2</TextBlock>
+        <TextBlock  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" Margin="73,680,40,55" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Width="287" TextAlignment="Center">semanas de las 16 del semestre</TextBlock>
+        <TextBlock Name="lblScoreFinal" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="12" TextWrapping="Wrap" TextAlignment="Right" Margin="0,680,327,56" HorizontalAlignment="Right" VerticalAlignment="Center" Foreground="White" Width="63">2</TextBlock>
     </Grid>
 </UserControl>

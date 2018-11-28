@@ -190,8 +190,8 @@ namespace ReignsMultimedia_Memo {
                     "“Oye Memo, necesitamos hablar de los alumnos de multimedia…”",
                     "“...¿Ahora qué hicieron…?”", new List<int> { 0, 0, 10, 20 }, null,
                     "“Me acabo de acordar que estoy ocupado…”", new List<int> { 0, 0, -20, -20 }, null);
-            Event event26 = new Event("Molle", new BitmapImage(new Uri(
-                    "/Assets/Characters/Molle.png", UriKind.Relative)),
+            Event event26 = new Event("Emiliano", new BitmapImage(new Uri(
+                    "/Assets/Characters/Emiliano.png", UriKind.Relative)),
                     "“Oye, Memo. Estos alumnos reprobaron el semestre ¿Qué onda?”",
                     "“Pues ni modo, que se vayan a extraordinario”", new List<int> { 0, 20, 10, 0 }, null,
                     "“Ponles 7 a todos”", new List<int> { 20, -10, -10, -20 }, null);
@@ -508,7 +508,7 @@ namespace ReignsMultimedia_Memo {
                 gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
                     "/Assets/Icons/EstresBIG.png", UriKind.Relative));
             }
-            gameOverPanel.lblFinalScore.Text = Stats.currentWeek.ToString();
+            gameOverPanel.lblScoreFinal.Text = Stats.currentWeek.ToString();
         }
 
         void ResetIndicators(StatsPanel statsPanel) {
