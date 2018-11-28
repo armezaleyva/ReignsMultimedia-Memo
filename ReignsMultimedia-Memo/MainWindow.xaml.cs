@@ -333,6 +333,8 @@ namespace ReignsMultimedia_Memo {
                         var deltaTime = currentTime - previousTime;
                         MovePlayer(deltaTime);
                         var minigamePanel = (MinigamePanel)panelBase.Children[0];
+
+                        var students = new List<Image>();
                         var student1 = minigamePanel.Alumno1MG;
                         var student2 = minigamePanel.Alumno2MG;
                         var student3 = minigamePanel.Alumno3MG;
@@ -340,18 +342,30 @@ namespace ReignsMultimedia_Memo {
                         var student5 = minigamePanel.Alumno5MG;
                         var student6 = minigamePanel.Alumno6MG;
 
-                        double xStudent1 = Canvas.GetLeft(student1);
-                        double yStudent1 = Canvas.GetTop(student1);
-                        double xStudent2 = Canvas.GetLeft(student2);
-                        double yStudent2 = Canvas.GetTop(student2);
-                        double xStudent3 = Canvas.GetLeft(student3);
-                        double yStudent3 = Canvas.GetTop(student3);
-                        double xStudent4 = Canvas.GetLeft(student4);
-                        double yStudent4 = Canvas.GetTop(student4);
-                        double xStudent5 = Canvas.GetLeft(student5);
-                        double yStudent5 = Canvas.GetTop(student5);
-                        double xStudent6 = Canvas.GetLeft(student6);
-                        double yStudent6 = Canvas.GetTop(student6);
+                        students.Add(student1);
+                        students.Add(student2);
+                        students.Add(student3);
+                        students.Add(student4);
+                        students.Add(student5);
+                        students.Add(student6);
+
+                        var xList = new List<double> {
+                            Canvas.GetLeft(student1),
+                            Canvas.GetLeft(student2),
+                            Canvas.GetLeft(student3),
+                            Canvas.GetLeft(student4),
+                            Canvas.GetLeft(student5),
+                            Canvas.GetLeft(student6)
+                        };
+
+                        var yList = new List<double> {
+                            Canvas.GetTop(student1),
+                            Canvas.GetTop(student2),
+                            Canvas.GetTop(student3),
+                            Canvas.GetTop(student4),
+                            Canvas.GetTop(student5),
+                            Canvas.GetTop(student6)
+                        };
 
                         var imgMemo = minigamePanel.MemoMG;
                         double yPlayer = Canvas.GetTop(imgMemo);
@@ -359,10 +373,19 @@ namespace ReignsMultimedia_Memo {
                         var xHitbox = xPlayer + imgMemo.Width;
                         var yHitbox = yPlayer + imgMemo.Height;
 
-                        if ((xHitbox >= xStudent1 && xPlayer <= xStudent1 + student1.Width) &&
-                            (yHitbox >= yStudent1 && yPlayer <= yStudent1 + student1.Height)) {
-                            gameState = GameState.Gameover;
+                        var i = 0;
+                        foreach (var student in students) {
+                            if ((xHitbox >= xList[i] && xPlayer <= xList[i] + student.Width) &&
+                                (yHitbox >= yList[i] && yPlayer <= yList[i] + student.Height)) {
+                                gameState = GameState.Gameover;
+                                var bc = new BrushConverter();
+                                gridBase.Background = (Brush)bc.ConvertFrom("#060417");
+                                return;
+                            }
+                            i++;
                         }
+
+                        //Canvas.SetLeft(student1, )
 
                         previousTime = currentTime;
                     });
@@ -375,6 +398,7 @@ namespace ReignsMultimedia_Memo {
                         panelBase.Children.Clear();
                         panelBase.Children.Add(new Assets.GameOverPanel());
                         GameOver();
+                        return;
                     });
                 }
             }
@@ -587,7 +611,7 @@ namespace ReignsMultimedia_Memo {
                     "/Assets/Icons/EstresBIG.png", UriKind.Relative));
             }
             else {
-                gameOverPanel.lblGameOverInfo.Text = "Memo murió de estrés";
+                gameOverPanel.lblGameOverInfo.Text = "Memo murió de estrés :(";
                 gameOverPanel.imgGameOverInfo.Source = new BitmapImage(new Uri(
                     "/Assets/Icons/EstresBIG.png", UriKind.Relative));
             }
