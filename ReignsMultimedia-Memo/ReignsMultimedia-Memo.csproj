@@ -71,6 +71,9 @@
     <Compile Include="EventPanel.xaml.cs">
       <DependentUpon>EventPanel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MinigamePanel.xaml.cs">
+      <DependentUpon>MinigamePanel.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SequenceEvent.cs" />
     <Compile Include="Stats.cs" />
     <Compile Include="StatsPanel.xaml.cs">
@@ -108,6 +111,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="EventPanel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MinigamePanel.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

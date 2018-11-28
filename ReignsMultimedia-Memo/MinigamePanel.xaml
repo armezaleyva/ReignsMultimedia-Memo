@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ReignsMultimedia_Memo.MinigamePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ReignsMultimedia_Memo"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="400">
+    <Grid Background="White">
+
+        <Canvas>
+            <Image Name="MemoMG" Source="Assets/Minigame/Memo.png" Width="50" Canvas.Left="180" Canvas.Top="0"></Image>
+            <Image Name="Alumno1MG" Source="Assets/Minigame/alumno1.png" Width="37" Canvas.Left="0" Canvas.Top="500"></Image>
+            <Image Name="Alumno2MG" Source="Assets/Minigame/alumno2.png" Width="37" Canvas.Left="0" Canvas.Top="130"></Image>
+            <Image Name="Alumno3MG" Source="Assets/Minigame/alumno3.png" Width="37" Canvas.Left="0" Canvas.Top="380"></Image>
+            <Image Name="Alumno4MG" Source="Assets/Minigame/alumno4.png" Width="37" Canvas.Left="350" Canvas.Top="380"></Image>
+            <Image Name="Alumno5MG" Source="Assets/Minigame/alumno5.png" Width="37" Canvas.Left="350" Canvas.Top="500"></Image>
+            <Image Name="Alumno6MG" Source="Assets/Minigame/alumno6.png" Width="37" Canvas.Left="350" Canvas.Top="130"></Image>
+            <Image Name="CarroMG" Source="Assets/Minigame/carro.png" Width="190" Canvas.Left="120" Canvas.Top="620"></Image>
+        </Canvas>
+        <TextBlock Name="lblWarning"  HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="36" TextWrapping="Wrap" TextAlignment="Center" FontWeight="Bold" Opacity="1">¡Estás estresado! Escapa de tus alumnos</TextBlock>
+    </Grid>
+</UserControl>
