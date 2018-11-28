@@ -51,7 +51,7 @@ namespace ReignsMultimedia_Memo {
                     "“Mmm, mínimo vamos a ver si la geometría la hiciste bien”", new List<int> { 0, 0, 0, 10 }, sequenceEvent12_2);
             SequenceEvent sequenceEvent10_1 = new SequenceEvent("Betito", new BitmapImage(new Uri(
                     "/Assets/Characters/Betito.png", UriKind.Relative)),
-                    "“Pues hice lo que pude…”",
+                    "“Pues hice lo que pud...”",
                     "“No, no, está todo mal. Cero”", new List<int> { -20, 0, 0, 20 }, null,
                     "“No, no, está todo mal. Cero”", new List<int> { -20, 0, 0, 20 }, null);
             SequenceEvent sequenceEvent1_2 = new SequenceEvent("Alex", new BitmapImage(new Uri(

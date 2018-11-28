@@ -7,12 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="627" d:DesignWidth="400" Width="400" Height="627">
     <Grid>
-
         <TextBlock Name="lblPersonaje"  HorizontalAlignment="Center" VerticalAlignment="Top" Width="280" Height="55" FontSize="24" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="#FFFDFDFD" Margin="0,30,0,0" TextAlignment="Center" Padding="13">
             <TextBlock.Background>
                 <ImageBrush ImageSource="Assets/Splashes/titleBackground.png"/>
             </TextBlock.Background> Lalo
         </TextBlock>
+
+        <TextBlock FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="260,0,0,0" OpacityMask="Black">Semanas:</TextBlock>
+        <TextBlock Name="lblScore"  FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" Margin="0,0,44,0" HorizontalAlignment="Right" VerticalAlignment="Top" OpacityMask="Black">0</TextBlock>
 
         <TextBlock Name="lblEventoDescripcion" Background="#FF666666" TextWrapping="WrapWithOverflow" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" Foreground="White" FontSize="16" Margin="1,120,1,-99" Width="400" Height="125" VerticalAlignment="Top" Padding="30,20,20,27" TextAlignment="Justify" >Los alumnos se quejaron mucho de Patiño en la evaluación pasada y administración quiere que hables con él</TextBlock>
 
