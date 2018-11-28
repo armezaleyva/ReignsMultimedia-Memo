@@ -170,13 +170,13 @@ namespace ReignsMultimedia_Memo {
                     "Se siente mal su esposa y no podrá dar clases",
                     "“Pues ni modo, ven cuando puedas”", new List<int> { 0, 10, -20, 0 }, null,
                     "“No, has faltado un montón”", new List<int> { 0, -10, 10, 0 }, null);
-            Event event22 = new Event("Calificación Docente", new BitmapImage(new Uri(
-                    "/Assets/Characters/Docente.png", UriKind.Relative)),
+            Event event22 = new Event("Docencia", new BitmapImage(new Uri(
+                    "/Assets/Characters/Docencia.png", UriKind.Relative)),
                     "Muchos alumnos te calificaron mal",
                     "“Hablaré con ellos para resolver el problema”", new List<int> { 20, 0, 10, 10 }, null,
                     "“Ni modo, ellos por flojos”", new List<int> { -10, 0, 0, -10 }, null);
-            Event event23 = new Event("Calificación Docente", new BitmapImage(new Uri(
-                    "/Assets/Characters/Docente.png", UriKind.Relative)),
+            Event event23 = new Event("Docencia", new BitmapImage(new Uri(
+                    "/Assets/Characters/Docencia.png", UriKind.Relative)),
                     "Los alumnos se quejaron mucho de Patiño en la evaluación pasada y administración quiere que hables con él",
                     "“Ughhh...Okay…”", new List<int> { 0, -20, 20, 10 }, null,
                     "“Oh, pero mira la hora…”", new List<int> { 0, 0, -20, -10 }, null);

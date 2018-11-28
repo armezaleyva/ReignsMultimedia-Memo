@@ -147,7 +147,7 @@
     <Resource Include="Assets\Characters\Andy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-    <Resource Include="Assets\Characters\Docente.png">
+    <Resource Include="Assets\Characters\Docencia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Assets\Characters\Emiliano.png">
