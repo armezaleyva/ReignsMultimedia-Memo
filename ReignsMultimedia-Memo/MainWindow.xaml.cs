@@ -280,6 +280,7 @@ namespace ReignsMultimedia_Memo {
         double fadeOutTimer = 0.0000;
 
         bool initializingGameplayWindow = true;
+        bool initializingMinigameWindow = true;
         bool transitioningToEvent = true;
         bool awaitingRightConfirmation = false;
         bool awaitingLeftConfirmation = false;
@@ -320,11 +321,18 @@ namespace ReignsMultimedia_Memo {
                 else if (gameState == GameState.Minigame) {
                     Dispatcher.Invoke(
                     () => {
-                        panelBase.Children.Clear();
-                        panelBase.Children.Add(new MinigamePanel());
+                        if (initializingMinigameWindow) {
+                            panelBase.Children.Clear();
+                            panelBase.Children.Add(new MinigamePanel());
+                            panelBase.Focus();
+                            initializingMinigameWindow = false;
+                            previousTime = stopwatch.Elapsed;
+                        }
+                        
                         var currentTime = stopwatch.Elapsed;
                         var deltaTime = currentTime - previousTime;
                         MovePlayer(deltaTime);
+                        previousTime = currentTime;
                     });
                     
                 }
@@ -423,10 +431,25 @@ namespace ReignsMultimedia_Memo {
             double currentPlayerLeft = Canvas.GetLeft(imgMemo);
             switch (playerDirection) {
                 case Direction.Up:
-                    Canvas.SetTop(imgMemo, currentPlayerTop - playerSpeed * deltaTime.TotalSeconds);
+                    if (currentPlayerTop > 0) {
+                        Canvas.SetTop(imgMemo, currentPlayerTop - playerSpeed * deltaTime.TotalSeconds);
+                    }
                     break;
                 case Direction.Down:
                     Canvas.SetTop(imgMemo, currentPlayerTop + playerSpeed * deltaTime.TotalSeconds);
+                    break;
+                case Direction.Left:
+                    if (currentPlayerLeft - playerSpeed * deltaTime.TotalSeconds >= 0) {
+                        Canvas.SetLeft(imgMemo, currentPlayerLeft - (playerSpeed * deltaTime.TotalSeconds));
+                    }
+                    break;
+                case Direction.Right:
+                    double newPosition = currentPlayerLeft + playerSpeed * deltaTime.TotalSeconds;
+                    if (newPosition + imgMemo.Width <= 400) {
+                        Canvas.SetLeft(imgMemo, newPosition);
+                    }
+                    break;
+                case Direction.None:
                     break;
             }
         }
@@ -616,7 +639,7 @@ namespace ReignsMultimedia_Memo {
             }
         }
 
-        private void miCanvas_KeyUp(object sender, KeyEventArgs e) {
+        private void PanelBase_KeyUp(object sender, KeyEventArgs e) {
             if (gameState == GameState.Minigame) {
                 if (e.Key == Key.Up && playerDirection == Direction.Up) {
                     playerDirection = Direction.None;
