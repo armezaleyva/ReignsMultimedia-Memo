@@ -331,11 +331,13 @@ namespace ReignsMultimedia_Memo {
 
             var gameplayWindow = (GameplayWindow)panelBase.Children[0];
             var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
+            var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
 
             statsPanel.alumnosIcon.Height = (100 - Stats.estudiantes) * (baseHeightAlumnos / 100.00);
             statsPanel.maestrosIcon.Height = (100 - Stats.maestros) * (baseHeightMaestros / 100.00);
             statsPanel.administracionIcon.Height = (100 - Stats.administracion) * (baseHeightAdministracion / 100.00);
             statsPanel.estresIcon.Height = (100 - Stats.estres) * (baseHeightEstres / 100.00);
+            eventPanel.lblScore.Text = Stats.currentWeek.ToString();
         }
 
         void AnimateIntro() {

@@ -10,6 +10,6 @@ namespace ReignsMultimedia_Memo {
         public static int maestros = 50;
         public static int administracion = 50;
         public static int estres = 50;
-        public static int currentWeek = 1;
+        public static int currentWeek = 0;
     }
 }
