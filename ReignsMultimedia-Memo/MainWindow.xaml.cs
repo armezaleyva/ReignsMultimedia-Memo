@@ -59,7 +59,7 @@ namespace ReignsMultimedia_Memo {
                     "“¿...Cómo hago un te equis te...?”",
                     "“¡¿QUÉ?!”", new List<int> { 0, 0, 0, 30 }, null,
                     "“¿¡QUÉ!?”", new List<int> { 0, 0, 0, 30 }, null);
-            SequenceEvent sequenceEvent1_1 = new SequenceEvent("Alex", new BitmapImage(new Uri(
+            Event sequenceEvent1_1 = new SequenceEvent("Alex", new BitmapImage(new Uri(
                     "/Assets/Characters/Alex.png", UriKind.Relative)),
                     "“¿Cómo se hace eso?”",
                     "“¿Qué cosa?”", new List<int> { 0, 0, 0, 0 }, sequenceEvent1_2,
