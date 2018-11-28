@@ -367,13 +367,12 @@ namespace ReignsMultimedia_Memo {
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
             var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
 
-            ThreadStart threadStart = new ThreadStart(new Action(() => AnimateIndicators(eventEffects,
-                    eventPanel, statsPanel, decisionMade)));
+            ThreadStart threadStart = new ThreadStart(new Action(() => FadeIndicators(eventEffects, statsPanel)));
             Thread thread = new Thread(threadStart);
             thread.Start();
 
             eventPanel.lblRespuesta.Text = currentEvent.RightReactionText;
-            //eventPanel.imgEvent.Margin = new Thickness(60, 0, 0, 80);
+            eventPanel.imgEvent.Margin = new Thickness(60, 0, 0, 80);
             awaitingRightConfirmation = true;
             awaitingLeftConfirmation = false;
         }
@@ -383,8 +382,7 @@ namespace ReignsMultimedia_Memo {
             var eventPanel = (EventPanel)gameplayWindow.PanelEvent.Children[0];
             var statsPanel = (StatsPanel)gameplayWindow.PanelStats.Children[0];
 
-            ThreadStart threadStart = new ThreadStart(new Action(() => AnimateIndicators(eventEffects,
-                    eventPanel, statsPanel, decisionMade)));
+            ThreadStart threadStart = new ThreadStart(new Action(() => FadeIndicators(eventEffects, statsPanel)));
             Thread thread = new Thread(threadStart);
             thread.Start();
 
@@ -394,20 +392,20 @@ namespace ReignsMultimedia_Memo {
             awaitingRightConfirmation = false;
         }
 
-        void AnimateIndicators(List<int> eventEffects, EventPanel eventPanel, StatsPanel statsPanel, DecisionMade decisionMade) {
+        void FadeIndicators(List<int> eventEffects, StatsPanel statsPanel) {
             ResetTimers();
             Dispatcher.Invoke(() => { ResetIndicators(statsPanel); });
 
             previousTime = stopwatch.Elapsed;
             while (true) {
-                Dispatcher.Invoke(
-                () => {
-                    var currentTime = stopwatch.Elapsed;
-                    var deltaTime = currentTime - previousTime;
+                var currentTime = stopwatch.Elapsed;
+                var deltaTime = currentTime - previousTime;
+
+                if (fadeInTimer < indicatorFadeInDuration) {
                     fadeInTimer += deltaTime.TotalSeconds;
                     fadeIn += deltaTime.TotalSeconds / indicatorFadeInDuration;
-
-                    if (fadeInTimer < indicatorFadeInDuration) {
+                    Dispatcher.Invoke(
+                    () => {
                         if (eventEffects[0] != 0) {
                             statsPanel.indicatorAlumnos.Opacity = fadeIn;
                         }
@@ -420,23 +418,14 @@ namespace ReignsMultimedia_Memo {
                         if (eventEffects[3] != 0) {
                             statsPanel.indicatorEstres.Opacity = fadeIn;
                         }
+                    });
 
-                        if (decisionMade == DecisionMade.Right) {
-                            if (eventPanel.imgEvent.Margin.Left == 60) {
-                                if (fadeInTimer < indicatorFadeInDuration) {
-                                    //double percentageDecrease = (fadeInTimer) / indicatorFadeInDuration;
-                                    //margin -= 60 * (percentageDecrease / 10000);
-                                    margin -= 60 * fadeIn;
-                                    eventPanel.imgEvent.Margin = new Thickness(60, 0, margin, 80);
-                                }
-                            } 
-                        }
-                    }
+                }
+                else {
+                    break;
+                }
 
-                    previousTime = currentTime;
-                });
-
-                
+                previousTime = currentTime;
             }
         }
 
