@@ -23,7 +23,7 @@ namespace ReignsMultimedia_Memo {
         Stopwatch stopwatch;
         TimeSpan previousTime;
 
-        public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover };
+        public enum GameState { Intro, Menu, Gameplay, Minigame, Gameover, Victory };
         public static GameState gameState = GameState.Intro;
         enum DecisionMade { Right, Left };
         enum Direction { Up, Down, Left, Right, None };
@@ -31,12 +31,11 @@ namespace ReignsMultimedia_Memo {
 
         List<Event> events = new List<Event>();
 
-        double playerSpeed = 160;
+        double playerSpeed = 80;
 
         public MainWindow() {
             InitializeComponent();
             panelBase.Focus();
-            Stats.estres = 150;
 
             //List - Sequence Events
             SequenceEvent sequenceEvent20_1 = new SequenceEvent("Luis Mercado", new BitmapImage(new Uri(
@@ -298,7 +297,7 @@ namespace ReignsMultimedia_Memo {
                     Dispatcher.Invoke(
                     () => {
                         if (Stats.currentWeek > 16) {
-                            // Win Game
+                            gameState = GameState.Victory;
                         }
 
                         if (initializingGameplayWindow) {
@@ -367,9 +366,16 @@ namespace ReignsMultimedia_Memo {
                             Canvas.GetTop(student6)
                         };
 
+                        var studentSpeed = new List<double> {
+                            120, 100, 80, -180, -160, -120
+                        };
+
                         var imgMemo = minigamePanel.MemoMG;
+                        var imgCarro = minigamePanel.CarroMG;
                         double yPlayer = Canvas.GetTop(imgMemo);
                         double xPlayer = Canvas.GetLeft(imgMemo);
+                        double yCarro = Canvas.GetTop(imgCarro);
+                        double xCarro = Canvas.GetLeft(imgCarro);
                         var xHitbox = xPlayer + imgMemo.Width;
                         var yHitbox = yPlayer + imgMemo.Height;
 
@@ -382,8 +388,30 @@ namespace ReignsMultimedia_Memo {
                                 gridBase.Background = (Brush)bc.ConvertFrom("#060417");
                                 return;
                             }
+                            Canvas.SetLeft(student, xList[i] + studentSpeed[i] * deltaTime.TotalSeconds);
+                            if (i < 4) {
+                                if (Canvas.GetLeft(student) > 420) {
+                                    Canvas.SetLeft(student, -70);
+                                }
+                            } else {
+                                if (Canvas.GetLeft(student) < -70) {
+                                    Canvas.SetLeft(student, 420);
+                                }
+                            }
+
                             i++;
                         }
+
+                        if ((xHitbox >= xCarro && xPlayer <= xCarro + imgCarro.Width) &&
+                            (yHitbox >= yCarro && yPlayer <= yCarro + imgCarro.Height)) {
+                            Stats.estres = 50;
+                            var bc = new BrushConverter();
+                            gridBase.Background = (Brush)bc.ConvertFrom("#060417");
+                            initializingGameplayWindow = true;
+                            transitioningToEvent = true;
+                            gameState = GameState.Gameplay;
+                            return;
+                        } 
 
                         //Canvas.SetLeft(student1, )
 
@@ -398,6 +426,15 @@ namespace ReignsMultimedia_Memo {
                         panelBase.Children.Clear();
                         panelBase.Children.Add(new Assets.GameOverPanel());
                         GameOver();
+                        return;
+                    });
+                }
+
+                else if (gameState == GameState.Victory) {
+                    Dispatcher.Invoke(
+                    () => {
+                        panelBase.Children.Clear();
+                        panelBase.Children.Add(new VictoryPanel());
                         return;
                     });
                 }
@@ -638,7 +675,9 @@ namespace ReignsMultimedia_Memo {
                 gameState = GameState.Gameover;
             }
             else if (Stats.estres >= 100) {
+                initializingMinigameWindow = true;
                 gameState = GameState.Minigame;
+                playerDirection = Direction.None;
             }
 
             if (decisionMade == DecisionMade.Right) {
