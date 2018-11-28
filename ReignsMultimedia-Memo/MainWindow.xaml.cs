@@ -31,6 +31,8 @@ namespace ReignsMultimedia_Memo {
 
         List<Event> events = new List<Event>();
 
+        double playerSpeed = 60;
+
         public MainWindow() {
             InitializeComponent();
             panelBase.Focus();
@@ -414,7 +416,18 @@ namespace ReignsMultimedia_Memo {
         }
 
         void MovePlayer(TimeSpan deltaTime) {
-
+            var minigamePanel = (MinigamePanel)panelBase.Children[0];
+            var imgMemo = minigamePanel.MemoMG;
+            double currentPlayerTop = Canvas.GetTop(imgMemo);
+            double currentPlayerLeft = Canvas.GetLeft(imgMemo);
+            switch (playerDirection) {
+                case Direction.Up:
+                    Canvas.SetTop(imgMemo, currentPlayerTop - playerSpeed * deltaTime.TotalSeconds);
+                    break;
+                case Direction.Down:
+                    Canvas.SetTop(imgMemo, currentPlayerTop + playerSpeed * deltaTime.TotalSeconds);
+                    break;
+            }
         }
 
         void RightPrompt(List<int> eventEffects, DecisionMade decisionMade) {
