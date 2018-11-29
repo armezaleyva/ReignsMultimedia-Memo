@@ -31,7 +31,7 @@ namespace ReignsMultimedia_Memo {
 
         List<Event> events = new List<Event>();
 
-        double playerSpeed = 80;
+        double playerSpeed = 150;
 
         public MainWindow() {
             InitializeComponent();
