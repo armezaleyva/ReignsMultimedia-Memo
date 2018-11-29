@@ -7,6 +7,6 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="400">
     <Grid>
-         <Image Name="logo" Source="assets/logoMemo.png"></Image> 
+         <Image Name="logo" Source="assets/Splashes/logoMemo.png"></Image> 
     </Grid>
 </UserControl>

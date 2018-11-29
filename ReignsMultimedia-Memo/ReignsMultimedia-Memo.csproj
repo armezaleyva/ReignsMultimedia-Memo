@@ -148,7 +148,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Resource Include="Assets\Font\OCRASTD.OTF" />
+    <Content Include="Assets\Font\OCRASTD.OTF">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -158,134 +160,168 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Characters\Andy.png">
+    <Content Include="Assets\Characters\Andy.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Docencia.png">
+    </Content>
+    <Content Include="Assets\Characters\Docencia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Emiliano.png">
+    </Content>
+    <Content Include="Assets\Characters\Emiliano.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Lalo.png">
+    </Content>
+    <Content Include="Assets\Characters\Lalo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Minneth.png">
+    </Content>
+    <Content Include="Assets\Characters\Minneth.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Monica.png">
+    </Content>
+    <Content Include="Assets\Characters\Monica.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Pablo.png">
+    </Content>
+    <Content Include="Assets\Characters\Pablo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Rafa.png">
+    </Content>
+    <Content Include="Assets\Characters\Rafa.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Ruben.png">
+    </Content>
+    <Content Include="Assets\Characters\Ruben.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Sestier.png">
+    </Content>
+    <Content Include="Assets\Characters\Sestier.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logoMemo.png">
+    <Content Include="Assets\Splashes\logoMemo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Splashes\menuSplash.png" />
+    <Content Include="Assets\Splashes\menuSplash.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Icons\alumnosIcon.png">
+    <Content Include="Assets\Icons\alumnosIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\estresIcon.png">
+    </Content>
+    <Content Include="Assets\Icons\estresIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\maestrosIcon.png">
+    </Content>
+    <Content Include="Assets\Icons\maestrosIcon.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Icons\administracionIcon.png" />
+    <Content Include="Assets\Icons\administracionIcon.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Icons\administracionIconFULL.png" />
-    <Resource Include="Assets\Icons\alumnosIconFULL.png" />
-    <Resource Include="Assets\Icons\estresIconFULL.png" />
-    <Resource Include="Assets\Icons\maestrosIconFULL.png" />
+    <Content Include="Assets\Icons\administracionIconFULL.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\alumnosIconFULL.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\estresIconFULL.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Icons\maestrosIconFULL.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Splashes\titleBackground.png" />
+    <Content Include="Assets\Splashes\titleBackground.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Characters\Andrea.png">
+    <Content Include="Assets\Characters\Andrea.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Betin.png">
+    </Content>
+    <Content Include="Assets\Characters\Betin.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Betito.png">
+    </Content>
+    <Content Include="Assets\Characters\Betito.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Celina.png">
+    </Content>
+    <Content Include="Assets\Characters\Celina.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Claudia.png">
+    </Content>
+    <Content Include="Assets\Characters\Claudia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Erika.png">
+    </Content>
+    <Content Include="Assets\Characters\Erika.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Ivan.png">
+    </Content>
+    <Content Include="Assets\Characters\Ivan.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Luis.png">
+    </Content>
+    <Content Include="Assets\Characters\Luis.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Sebas.png">
+    </Content>
+    <Content Include="Assets\Characters\Sebas.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Characters\Sofia.png">
+    </Content>
+    <Content Include="Assets\Characters\Sofia.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Characters\Eduardo.png">
+    <Content Include="Assets\Characters\Eduardo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Icons\AdministracionBIG.png">
+    <Content Include="Assets\Icons\AdministracionBIG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\AlumnosBIG.png">
+    </Content>
+    <Content Include="Assets\Icons\AlumnosBIG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\EstresBIG.png">
+    </Content>
+    <Content Include="Assets\Icons\EstresBIG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
-    <Resource Include="Assets\Icons\MaestrosBIG.png">
+    </Content>
+    <Content Include="Assets\Icons\MaestrosBIG.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Resource>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\logomemo_D1F_icon.ico" />
+    <Content Include="Assets\logomemo_D1F_icon.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Characters\Alex.png" />
+    <Content Include="Assets\Characters\Alex.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Assets\Minigame\alumno1.png" />
-    <Resource Include="Assets\Minigame\alumno2.png" />
-    <Resource Include="Assets\Minigame\alumno3.png" />
-    <Resource Include="Assets\Minigame\alumno4.png" />
-    <Resource Include="Assets\Minigame\alumno5.png" />
-    <Resource Include="Assets\Minigame\alumno6.png" />
-    <Resource Include="Assets\Minigame\carro.png" />
-    <Resource Include="Assets\Minigame\Memo.png" />
+    <Content Include="Assets\Minigame\alumno1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\alumno2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\alumno3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\alumno4.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\alumno5.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\alumno6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\carro.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Minigame\Memo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

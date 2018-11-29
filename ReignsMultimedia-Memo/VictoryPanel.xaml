@@ -7,7 +7,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="750" d:DesignWidth="400">
     <Grid Background="#060417">
-        <Image Name="imgVictory"  Source="assets/logoMemo.png" Opacity="1"></Image>
+        <Image Name="imgVictory"  Source="assets/Splashes/logoMemo.png" Opacity="1"></Image>
         <TextBlock Name="lblVictoryMessage1" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="40" TextWrapping="Wrap" TextAlignment="Center" Margin="0,36,0,-36" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" Opacity="1">Terminaste el semestre como todo un rey</TextBlock>
         <TextBlock Name="lblVictoryMessage2" FontFamily="/ReignsMultimedia-Memo;component/Assets/Font/#OCR A Std" FontSize="40" TextWrapping="Wrap" TextAlignment="Center" Margin="0,36,0,-36" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" Opacity="0">Te libraste por ahora...</TextBlock>
     </Grid>
